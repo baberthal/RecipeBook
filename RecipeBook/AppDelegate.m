@@ -23,7 +23,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Insert code here to initialize your application
+    [DDLog addLogger:MY_LOGGER];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification
