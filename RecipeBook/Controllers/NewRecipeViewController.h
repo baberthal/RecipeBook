@@ -10,4 +10,10 @@
 
 @interface NewRecipeViewController : NSViewController
 
+@property(weak) IBOutlet NSButton *saveButton;
+@property(weak) IBOutlet NSButton *cancelButton;
+@property(weak) IBOutlet NSTextField *recipeNameField;
+@property(weak) IBOutlet NSLevelIndicator *recipeRatingIndicator;
+@property(weak) IBOutlet NSTextField *recipeDescriptionField;
+
 @end

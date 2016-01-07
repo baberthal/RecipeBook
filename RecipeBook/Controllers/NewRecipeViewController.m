@@ -14,9 +14,18 @@
 
 @implementation NewRecipeViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do view setup here.
+}
+
+- (IBAction)cancelButtonPressed:(id)sender
+{
+}
+
+- (IBAction)saveButtonPressed:(id)sender
+{
 }
 
 @end

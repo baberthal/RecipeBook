@@ -9,6 +9,11 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NewRecipeViewController">
             <connections>
+                <outlet property="cancelButton" destination="2UQ-do-VIJ" id="Q8n-cp-a1b"/>
+                <outlet property="recipeDescriptionField" destination="tQB-5c-4Sf" id="6EB-ha-9Os"/>
+                <outlet property="recipeNameField" destination="hqV-ax-1oY" id="xkB-PF-BXn"/>
+                <outlet property="recipeRatingIndicator" destination="FDb-2m-zBW" id="bj5-dt-Foj"/>
+                <outlet property="saveButton" destination="4ct-P6-aAS" id="cLR-2i-HAt"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -30,6 +35,9 @@
                         <string key="keyEquivalent" base64-UTF8="YES">
 DQ
 </string>
+                        <connections>
+                            <action selector="saveButtonPressed:" target="-2" id="bRv-cj-eqW"/>
+                        </connections>
                     </buttonCell>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2UQ-do-VIJ">
@@ -44,6 +52,9 @@ DQ
 Gw
 </string>
                     </buttonCell>
+                    <connections>
+                        <action selector="cancelButtonPressed:" target="-2" id="e7k-wo-aVU"/>
+                    </connections>
                 </button>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hqV-ax-1oY">
                     <rect key="frame" x="36" y="537" width="454" height="27"/>
