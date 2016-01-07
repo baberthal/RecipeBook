@@ -9,12 +9,34 @@
 /* Begin PBXBuildFile section */
 		377D4B18343D787F4CEC04CA /* libPods-RecipeBook.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB179E28E1C4437F44529CB7 /* libPods-RecipeBook.a */; };
 		5D2A12A64149B64A32E7EAF3 /* libPods-RecipeBookTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98A18BEE2BF7F954D37884CB /* libPods-RecipeBookTests.a */; };
+		905016FF1C3F1DFE000F1624 /* JMLRatingIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 905016FE1C3F1DFE000F1624 /* JMLRatingIndicator.m */; };
+		908BE2B51C3F07F200D6A37D /* JMLPopupButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 908BE2B41C3F07F200D6A37D /* JMLPopupButton.m */; };
+		908BE2B91C3F0D6000D6A37D /* NewRecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 908BE2B71C3F0D6000D6A37D /* NewRecipeViewController.m */; };
+		908BE2BA1C3F0D6000D6A37D /* NewRecipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 908BE2B81C3F0D6000D6A37D /* NewRecipeViewController.xib */; };
+		908BE2C41C3F115600D6A37D /* JMLRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 908BE2C31C3F115600D6A37D /* JMLRatingView.m */; };
 		90B330EB1C3DF16400679BA3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 90B330EA1C3DF16400679BA3 /* AppDelegate.m */; };
-		90B330EE1C3DF16400679BA3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 90B330ED1C3DF16400679BA3 /* main.m */; };
 		90B330F31C3DF16400679BA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90B330F21C3DF16400679BA3 /* Assets.xcassets */; };
 		90B330F61C3DF16400679BA3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90B330F41C3DF16400679BA3 /* MainMenu.xib */; };
 		90B331011C3DF16400679BA3 /* RecipeBookTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 90B331001C3DF16400679BA3 /* RecipeBookTests.m */; };
+		90C1BCF31C3E0A5A00DA5DA5 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C1BCF21C3E0A5A00DA5DA5 /* MainViewController.m */; };
+		90C1BD001C3E114500DA5DA5 /* RBItem+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C1BCFD1C3E114500DA5DA5 /* RBItem+CoreDataProperties.m */; };
+		90C1BD011C3E114500DA5DA5 /* RBItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C1BCFF1C3E114500DA5DA5 /* RBItem.m */; };
+		90C1BD121C3E116C00DA5DA5 /* RBFavorite+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C1BD031C3E116C00DA5DA5 /* RBFavorite+CoreDataProperties.m */; };
+		90C1BD131C3E116C00DA5DA5 /* RBFavorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C1BD051C3E116C00DA5DA5 /* RBFavorite.m */; };
+		90C1BD141C3E116C00DA5DA5 /* RBRecipe+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C1BD071C3E116C00DA5DA5 /* RBRecipe+CoreDataProperties.m */; };
+		90C1BD151C3E116C00DA5DA5 /* RBRecipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C1BD091C3E116C00DA5DA5 /* RBRecipe.m */; };
+		90C1BD161C3E116C00DA5DA5 /* RBRecipeGroup+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C1BD0B1C3E116C00DA5DA5 /* RBRecipeGroup+CoreDataProperties.m */; };
+		90C1BD171C3E116C00DA5DA5 /* RBRecipeGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C1BD0D1C3E116C00DA5DA5 /* RBRecipeGroup.m */; };
+		90C1BD181C3E116C00DA5DA5 /* RBRecipeStep+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C1BD0F1C3E116C00DA5DA5 /* RBRecipeStep+CoreDataProperties.m */; };
+		90C1BD191C3E116C00DA5DA5 /* RBRecipeStep.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C1BD111C3E116C00DA5DA5 /* RBRecipeStep.m */; };
+		90C1BD221C3E118A00DA5DA5 /* RBIngredientAmount+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C1BD1B1C3E118A00DA5DA5 /* RBIngredientAmount+CoreDataProperties.m */; };
+		90C1BD231C3E118A00DA5DA5 /* RBIngredientAmount.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C1BD1D1C3E118A00DA5DA5 /* RBIngredientAmount.m */; };
+		90C1BD241C3E118A00DA5DA5 /* RBIngredient+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C1BD1F1C3E118A00DA5DA5 /* RBIngredient+CoreDataProperties.m */; };
+		90C1BD251C3E118A00DA5DA5 /* RBIngredient.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C1BD211C3E118A00DA5DA5 /* RBIngredient.m */; };
 		90F768631C3DF30B0092347B /* RecipeBook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 90F768611C3DF30B0092347B /* RecipeBook.xcdatamodeld */; };
+		90F768661C3DF39F0092347B /* RBCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 90F768651C3DF39F0092347B /* RBCoreDataManager.m */; };
+		90F7686D1C3DF6910092347B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 90F7686B1C3DF6910092347B /* main.m */; };
+		90F768701C3DF7500092347B /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90F7686F1C3DF7500092347B /* MainWindowController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,17 +53,61 @@
 		3F9FB74078C36A658FED285A /* Pods-RecipeBookTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeBookTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RecipeBookTests/Pods-RecipeBookTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4D3E396F8825E5FB310A2085 /* Pods-RecipeBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeBook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RecipeBook/Pods-RecipeBook.debug.xcconfig"; sourceTree = "<group>"; };
 		6E81ADCD11574B99505E46F6 /* Pods-RecipeBookTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeBookTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RecipeBookTests/Pods-RecipeBookTests.release.xcconfig"; sourceTree = "<group>"; };
+		905016FD1C3F1DFE000F1624 /* JMLRatingIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMLRatingIndicator.h; sourceTree = "<group>"; };
+		905016FE1C3F1DFE000F1624 /* JMLRatingIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMLRatingIndicator.m; sourceTree = "<group>"; };
+		908BE2B31C3F07F200D6A37D /* JMLPopupButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMLPopupButton.h; sourceTree = "<group>"; };
+		908BE2B41C3F07F200D6A37D /* JMLPopupButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMLPopupButton.m; sourceTree = "<group>"; };
+		908BE2B61C3F0D6000D6A37D /* NewRecipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewRecipeViewController.h; sourceTree = "<group>"; };
+		908BE2B71C3F0D6000D6A37D /* NewRecipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewRecipeViewController.m; sourceTree = "<group>"; };
+		908BE2B81C3F0D6000D6A37D /* NewRecipeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewRecipeViewController.xib; sourceTree = "<group>"; };
+		908BE2C21C3F115600D6A37D /* JMLRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMLRatingView.h; sourceTree = "<group>"; };
+		908BE2C31C3F115600D6A37D /* JMLRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMLRatingView.m; sourceTree = "<group>"; };
 		90B330E61C3DF16400679BA3 /* RecipeBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90B330E91C3DF16400679BA3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		90B330EA1C3DF16400679BA3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		90B330ED1C3DF16400679BA3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		90B330F21C3DF16400679BA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		90B330F51C3DF16400679BA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		90B330F71C3DF16400679BA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90B330FC1C3DF16400679BA3 /* RecipeBookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipeBookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		90B331001C3DF16400679BA3 /* RecipeBookTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecipeBookTests.m; sourceTree = "<group>"; };
 		90B331021C3DF16400679BA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90C1BCF11C3E0A5A00DA5DA5 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		90C1BCF21C3E0A5A00DA5DA5 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		90C1BCFC1C3E114500DA5DA5 /* RBItem+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RBItem+CoreDataProperties.h"; sourceTree = "<group>"; };
+		90C1BCFD1C3E114500DA5DA5 /* RBItem+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RBItem+CoreDataProperties.m"; sourceTree = "<group>"; };
+		90C1BCFE1C3E114500DA5DA5 /* RBItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBItem.h; sourceTree = "<group>"; };
+		90C1BCFF1C3E114500DA5DA5 /* RBItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBItem.m; sourceTree = "<group>"; };
+		90C1BD021C3E116C00DA5DA5 /* RBFavorite+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RBFavorite+CoreDataProperties.h"; sourceTree = "<group>"; };
+		90C1BD031C3E116C00DA5DA5 /* RBFavorite+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RBFavorite+CoreDataProperties.m"; sourceTree = "<group>"; };
+		90C1BD041C3E116C00DA5DA5 /* RBFavorite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBFavorite.h; sourceTree = "<group>"; };
+		90C1BD051C3E116C00DA5DA5 /* RBFavorite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBFavorite.m; sourceTree = "<group>"; };
+		90C1BD061C3E116C00DA5DA5 /* RBRecipe+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RBRecipe+CoreDataProperties.h"; sourceTree = "<group>"; };
+		90C1BD071C3E116C00DA5DA5 /* RBRecipe+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RBRecipe+CoreDataProperties.m"; sourceTree = "<group>"; };
+		90C1BD081C3E116C00DA5DA5 /* RBRecipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBRecipe.h; sourceTree = "<group>"; };
+		90C1BD091C3E116C00DA5DA5 /* RBRecipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBRecipe.m; sourceTree = "<group>"; };
+		90C1BD0A1C3E116C00DA5DA5 /* RBRecipeGroup+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RBRecipeGroup+CoreDataProperties.h"; sourceTree = "<group>"; };
+		90C1BD0B1C3E116C00DA5DA5 /* RBRecipeGroup+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RBRecipeGroup+CoreDataProperties.m"; sourceTree = "<group>"; };
+		90C1BD0C1C3E116C00DA5DA5 /* RBRecipeGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBRecipeGroup.h; sourceTree = "<group>"; };
+		90C1BD0D1C3E116C00DA5DA5 /* RBRecipeGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBRecipeGroup.m; sourceTree = "<group>"; };
+		90C1BD0E1C3E116C00DA5DA5 /* RBRecipeStep+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RBRecipeStep+CoreDataProperties.h"; sourceTree = "<group>"; };
+		90C1BD0F1C3E116C00DA5DA5 /* RBRecipeStep+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RBRecipeStep+CoreDataProperties.m"; sourceTree = "<group>"; };
+		90C1BD101C3E116C00DA5DA5 /* RBRecipeStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBRecipeStep.h; sourceTree = "<group>"; };
+		90C1BD111C3E116C00DA5DA5 /* RBRecipeStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBRecipeStep.m; sourceTree = "<group>"; };
+		90C1BD1A1C3E118A00DA5DA5 /* RBIngredientAmount+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RBIngredientAmount+CoreDataProperties.h"; sourceTree = "<group>"; };
+		90C1BD1B1C3E118A00DA5DA5 /* RBIngredientAmount+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RBIngredientAmount+CoreDataProperties.m"; sourceTree = "<group>"; };
+		90C1BD1C1C3E118A00DA5DA5 /* RBIngredientAmount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBIngredientAmount.h; sourceTree = "<group>"; };
+		90C1BD1D1C3E118A00DA5DA5 /* RBIngredientAmount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBIngredientAmount.m; sourceTree = "<group>"; };
+		90C1BD1E1C3E118A00DA5DA5 /* RBIngredient+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RBIngredient+CoreDataProperties.h"; sourceTree = "<group>"; };
+		90C1BD1F1C3E118A00DA5DA5 /* RBIngredient+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RBIngredient+CoreDataProperties.m"; sourceTree = "<group>"; };
+		90C1BD201C3E118A00DA5DA5 /* RBIngredient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBIngredient.h; sourceTree = "<group>"; };
+		90C1BD211C3E118A00DA5DA5 /* RBIngredient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBIngredient.m; sourceTree = "<group>"; };
 		90F768621C3DF30B0092347B /* RecipeBook.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RecipeBook.xcdatamodel; sourceTree = "<group>"; };
+		90F768641C3DF39F0092347B /* RBCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBCoreDataManager.h; sourceTree = "<group>"; };
+		90F768651C3DF39F0092347B /* RBCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBCoreDataManager.m; sourceTree = "<group>"; };
+		90F7686A1C3DF6910092347B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90F7686B1C3DF6910092347B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		90F7686E1C3DF7500092347B /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
+		90F7686F1C3DF7500092347B /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
+		90F768711C3DF9210092347B /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		98A18BEE2BF7F954D37884CB /* libPods-RecipeBookTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RecipeBookTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B604331DA6373CDB210CDFD9 /* Pods-RecipeBook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeBook.release.xcconfig"; path = "Pods/Target Support Files/Pods-RecipeBook/Pods-RecipeBook.release.xcconfig"; sourceTree = "<group>"; };
 		DB179E28E1C4437F44529CB7 /* libPods-RecipeBook.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RecipeBook.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +144,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		908BE2BE1C3F114800D6A37D /* Rating Indicator */ = {
+			isa = PBXGroup;
+			children = (
+				908BE2C21C3F115600D6A37D /* JMLRatingView.h */,
+				908BE2C31C3F115600D6A37D /* JMLRatingView.m */,
+				905016FD1C3F1DFE000F1624 /* JMLRatingIndicator.h */,
+				905016FE1C3F1DFE000F1624 /* JMLRatingIndicator.m */,
+			);
+			path = "Rating Indicator";
+			sourceTree = "<group>";
+		};
 		90B330DD1C3DF16400679BA3 = {
 			isa = PBXGroup;
 			children = (
@@ -101,23 +178,16 @@
 		90B330E81C3DF16400679BA3 /* RecipeBook */ = {
 			isa = PBXGroup;
 			children = (
-				90F768601C3DF30B0092347B /* CoreData */,
 				90B330E91C3DF16400679BA3 /* AppDelegate.h */,
 				90B330EA1C3DF16400679BA3 /* AppDelegate.m */,
+				90F768601C3DF30B0092347B /* CoreData */,
+				90F768671C3DF5C70092347B /* Controllers */,
+				90F768681C3DF5C70092347B /* Views */,
 				90B330F21C3DF16400679BA3 /* Assets.xcassets */,
 				90B330F41C3DF16400679BA3 /* MainMenu.xib */,
-				90B330EC1C3DF16400679BA3 /* Supporting Files */,
+				90F768691C3DF6910092347B /* Supporting Files */,
 			);
 			path = RecipeBook;
-			sourceTree = "<group>";
-		};
-		90B330EC1C3DF16400679BA3 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				90B330F71C3DF16400679BA3 /* Info.plist */,
-				90B330ED1C3DF16400679BA3 /* main.m */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		90B330FF1C3DF16400679BA3 /* RecipeBookTests */ = {
@@ -129,12 +199,84 @@
 			path = RecipeBookTests;
 			sourceTree = "<group>";
 		};
+		90C1BCFB1C3E114500DA5DA5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				90C1BD1A1C3E118A00DA5DA5 /* RBIngredientAmount+CoreDataProperties.h */,
+				90C1BD1B1C3E118A00DA5DA5 /* RBIngredientAmount+CoreDataProperties.m */,
+				90C1BD1C1C3E118A00DA5DA5 /* RBIngredientAmount.h */,
+				90C1BD1D1C3E118A00DA5DA5 /* RBIngredientAmount.m */,
+				90C1BD1E1C3E118A00DA5DA5 /* RBIngredient+CoreDataProperties.h */,
+				90C1BD1F1C3E118A00DA5DA5 /* RBIngredient+CoreDataProperties.m */,
+				90C1BD201C3E118A00DA5DA5 /* RBIngredient.h */,
+				90C1BD211C3E118A00DA5DA5 /* RBIngredient.m */,
+				90C1BD021C3E116C00DA5DA5 /* RBFavorite+CoreDataProperties.h */,
+				90C1BD031C3E116C00DA5DA5 /* RBFavorite+CoreDataProperties.m */,
+				90C1BD041C3E116C00DA5DA5 /* RBFavorite.h */,
+				90C1BD051C3E116C00DA5DA5 /* RBFavorite.m */,
+				90C1BD061C3E116C00DA5DA5 /* RBRecipe+CoreDataProperties.h */,
+				90C1BD071C3E116C00DA5DA5 /* RBRecipe+CoreDataProperties.m */,
+				90C1BD081C3E116C00DA5DA5 /* RBRecipe.h */,
+				90C1BD091C3E116C00DA5DA5 /* RBRecipe.m */,
+				90C1BD0A1C3E116C00DA5DA5 /* RBRecipeGroup+CoreDataProperties.h */,
+				90C1BD0B1C3E116C00DA5DA5 /* RBRecipeGroup+CoreDataProperties.m */,
+				90C1BD0C1C3E116C00DA5DA5 /* RBRecipeGroup.h */,
+				90C1BD0D1C3E116C00DA5DA5 /* RBRecipeGroup.m */,
+				90C1BD0E1C3E116C00DA5DA5 /* RBRecipeStep+CoreDataProperties.h */,
+				90C1BD0F1C3E116C00DA5DA5 /* RBRecipeStep+CoreDataProperties.m */,
+				90C1BD101C3E116C00DA5DA5 /* RBRecipeStep.h */,
+				90C1BD111C3E116C00DA5DA5 /* RBRecipeStep.m */,
+				90C1BCFC1C3E114500DA5DA5 /* RBItem+CoreDataProperties.h */,
+				90C1BCFD1C3E114500DA5DA5 /* RBItem+CoreDataProperties.m */,
+				90C1BCFE1C3E114500DA5DA5 /* RBItem.h */,
+				90C1BCFF1C3E114500DA5DA5 /* RBItem.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		90F768601C3DF30B0092347B /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				90C1BCFB1C3E114500DA5DA5 /* Models */,
 				90F768611C3DF30B0092347B /* RecipeBook.xcdatamodeld */,
+				90F768641C3DF39F0092347B /* RBCoreDataManager.h */,
+				90F768651C3DF39F0092347B /* RBCoreDataManager.m */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		90F768671C3DF5C70092347B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				90F7686E1C3DF7500092347B /* MainWindowController.h */,
+				90F7686F1C3DF7500092347B /* MainWindowController.m */,
+				90C1BCF11C3E0A5A00DA5DA5 /* MainViewController.h */,
+				90C1BCF21C3E0A5A00DA5DA5 /* MainViewController.m */,
+				908BE2B61C3F0D6000D6A37D /* NewRecipeViewController.h */,
+				908BE2B71C3F0D6000D6A37D /* NewRecipeViewController.m */,
+				908BE2B81C3F0D6000D6A37D /* NewRecipeViewController.xib */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		90F768681C3DF5C70092347B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				908BE2BE1C3F114800D6A37D /* Rating Indicator */,
+				908BE2B31C3F07F200D6A37D /* JMLPopupButton.h */,
+				908BE2B41C3F07F200D6A37D /* JMLPopupButton.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		90F768691C3DF6910092347B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				90F7686A1C3DF6910092347B /* Info.plist */,
+				90F7686B1C3DF6910092347B /* main.m */,
+				90F768711C3DF9210092347B /* Prefix.pch */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		99D681AC6E81B767A73E7483 /* Frameworks */ = {
@@ -234,6 +376,7 @@
 			files = (
 				90B330F31C3DF16400679BA3 /* Assets.xcassets in Resources */,
 				90B330F61C3DF16400679BA3 /* MainMenu.xib in Resources */,
+				908BE2BA1C3F0D6000D6A37D /* NewRecipeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,9 +487,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90B330EE1C3DF16400679BA3 /* main.m in Sources */,
+				90C1BD221C3E118A00DA5DA5 /* RBIngredientAmount+CoreDataProperties.m in Sources */,
+				90C1BD121C3E116C00DA5DA5 /* RBFavorite+CoreDataProperties.m in Sources */,
+				90C1BD191C3E116C00DA5DA5 /* RBRecipeStep.m in Sources */,
+				90C1BD181C3E116C00DA5DA5 /* RBRecipeStep+CoreDataProperties.m in Sources */,
+				908BE2B51C3F07F200D6A37D /* JMLPopupButton.m in Sources */,
+				90C1BD151C3E116C00DA5DA5 /* RBRecipe.m in Sources */,
+				90F768701C3DF7500092347B /* MainWindowController.m in Sources */,
+				90C1BD251C3E118A00DA5DA5 /* RBIngredient.m in Sources */,
+				90C1BCF31C3E0A5A00DA5DA5 /* MainViewController.m in Sources */,
+				90C1BD161C3E116C00DA5DA5 /* RBRecipeGroup+CoreDataProperties.m in Sources */,
+				90F768661C3DF39F0092347B /* RBCoreDataManager.m in Sources */,
 				90B330EB1C3DF16400679BA3 /* AppDelegate.m in Sources */,
+				905016FF1C3F1DFE000F1624 /* JMLRatingIndicator.m in Sources */,
+				90C1BD001C3E114500DA5DA5 /* RBItem+CoreDataProperties.m in Sources */,
+				908BE2B91C3F0D6000D6A37D /* NewRecipeViewController.m in Sources */,
+				90F7686D1C3DF6910092347B /* main.m in Sources */,
+				90C1BD131C3E116C00DA5DA5 /* RBFavorite.m in Sources */,
+				90C1BD011C3E114500DA5DA5 /* RBItem.m in Sources */,
+				90C1BD171C3E116C00DA5DA5 /* RBRecipeGroup.m in Sources */,
+				90C1BD241C3E118A00DA5DA5 /* RBIngredient+CoreDataProperties.m in Sources */,
 				90F768631C3DF30B0092347B /* RecipeBook.xcdatamodeld in Sources */,
+				90C1BD231C3E118A00DA5DA5 /* RBIngredientAmount.m in Sources */,
+				908BE2C41C3F115600D6A37D /* JMLRatingView.m in Sources */,
+				90C1BD141C3E116C00DA5DA5 /* RBRecipe+CoreDataProperties.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,7 +629,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = RecipeBook/Info.plist;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/RecipeBook/Supporting Files/Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/RecipeBook/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.jmorgan.RecipeBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -478,7 +644,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = RecipeBook/Info.plist;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/RecipeBook/Supporting Files/Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/RecipeBook/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.jmorgan.RecipeBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
