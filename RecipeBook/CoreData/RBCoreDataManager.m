@@ -7,6 +7,7 @@
 //
 
 #import "RBCoreDataManager.h"
+#import "RBFavorite.h"
 
 @implementation RBCoreDataManager
 
@@ -151,4 +152,40 @@
         [[NSApplication sharedApplication] presentError:error];
     }
 }
+
+#pragma mark - Properties
+@synthesize favorites = _favorites;
+
+- (NSArray<RBFavorite *> *)favorites
+{
+    if (_favorites) {
+        return _favorites;
+    }
+
+    @synchronized(self)
+    {
+        NSMutableArray<RBFavorite *> *items = [NSMutableArray array];
+
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Favorite"];
+        NSError *error;
+
+        NSArray<RBFavorite *> *results =
+              [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+
+        if (error) {
+            DDLogError(@"Error fetching favorites: %@\n%@", error.localizedDescription,
+                       error.userInfo);
+        }
+        else {
+            NSSortDescriptor *sortDescriptor =
+                  [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+            [items addObjectsFromArray:[results sortedArrayUsingDescriptors:@[ sortDescriptor ]]];
+        }
+
+        _favorites = [items copy];
+    }
+
+    return _favorites;
+}
+
 @end

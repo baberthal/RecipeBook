@@ -10,6 +10,8 @@
 #import <CoreData/CoreData.h>
 #import <Foundation/Foundation.h>
 
+@class RBFavorite, RBItem;
+
 @interface RBCoreDataManager : NSObject
 
 @property(readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
@@ -17,5 +19,7 @@
 @property(readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 + (instancetype)sharedManager;
+
+@property(readonly) IBOutlet NSArray<RBFavorite *> *favorites;
 
 @end
