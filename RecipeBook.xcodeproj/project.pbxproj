@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		377D4B18343D787F4CEC04CA /* libPods-RecipeBook.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB179E28E1C4437F44529CB7 /* libPods-RecipeBook.a */; };
+		5D2A12A64149B64A32E7EAF3 /* libPods-RecipeBookTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98A18BEE2BF7F954D37884CB /* libPods-RecipeBookTests.a */; };
 		90B330EB1C3DF16400679BA3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 90B330EA1C3DF16400679BA3 /* AppDelegate.m */; };
 		90B330EE1C3DF16400679BA3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 90B330ED1C3DF16400679BA3 /* main.m */; };
-		90B330F11C3DF16400679BA3 /* RecipeBook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 90B330EF1C3DF16400679BA3 /* RecipeBook.xcdatamodeld */; };
 		90B330F31C3DF16400679BA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90B330F21C3DF16400679BA3 /* Assets.xcassets */; };
 		90B330F61C3DF16400679BA3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90B330F41C3DF16400679BA3 /* MainMenu.xib */; };
 		90B331011C3DF16400679BA3 /* RecipeBookTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 90B331001C3DF16400679BA3 /* RecipeBookTests.m */; };
+		90F768631C3DF30B0092347B /* RecipeBook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 90F768611C3DF30B0092347B /* RecipeBook.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,17 +28,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F9FB74078C36A658FED285A /* Pods-RecipeBookTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeBookTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RecipeBookTests/Pods-RecipeBookTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4D3E396F8825E5FB310A2085 /* Pods-RecipeBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeBook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RecipeBook/Pods-RecipeBook.debug.xcconfig"; sourceTree = "<group>"; };
+		6E81ADCD11574B99505E46F6 /* Pods-RecipeBookTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeBookTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RecipeBookTests/Pods-RecipeBookTests.release.xcconfig"; sourceTree = "<group>"; };
 		90B330E61C3DF16400679BA3 /* RecipeBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90B330E91C3DF16400679BA3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		90B330EA1C3DF16400679BA3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		90B330ED1C3DF16400679BA3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		90B330F01C3DF16400679BA3 /* RecipeBook.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RecipeBook.xcdatamodel; sourceTree = "<group>"; };
 		90B330F21C3DF16400679BA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		90B330F51C3DF16400679BA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		90B330F71C3DF16400679BA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90B330FC1C3DF16400679BA3 /* RecipeBookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipeBookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		90B331001C3DF16400679BA3 /* RecipeBookTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecipeBookTests.m; sourceTree = "<group>"; };
 		90B331021C3DF16400679BA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90F768621C3DF30B0092347B /* RecipeBook.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RecipeBook.xcdatamodel; sourceTree = "<group>"; };
+		98A18BEE2BF7F954D37884CB /* libPods-RecipeBookTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RecipeBookTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B604331DA6373CDB210CDFD9 /* Pods-RecipeBook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeBook.release.xcconfig"; path = "Pods/Target Support Files/Pods-RecipeBook/Pods-RecipeBook.release.xcconfig"; sourceTree = "<group>"; };
+		DB179E28E1C4437F44529CB7 /* libPods-RecipeBook.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RecipeBook.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				377D4B18343D787F4CEC04CA /* libPods-RecipeBook.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,18 +60,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D2A12A64149B64A32E7EAF3 /* libPods-RecipeBookTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A05EFC953B64494EE7602F0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4D3E396F8825E5FB310A2085 /* Pods-RecipeBook.debug.xcconfig */,
+				B604331DA6373CDB210CDFD9 /* Pods-RecipeBook.release.xcconfig */,
+				3F9FB74078C36A658FED285A /* Pods-RecipeBookTests.debug.xcconfig */,
+				6E81ADCD11574B99505E46F6 /* Pods-RecipeBookTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		90B330DD1C3DF16400679BA3 = {
 			isa = PBXGroup;
 			children = (
 				90B330E81C3DF16400679BA3 /* RecipeBook */,
 				90B330FF1C3DF16400679BA3 /* RecipeBookTests */,
 				90B330E71C3DF16400679BA3 /* Products */,
+				4A05EFC953B64494EE7602F0 /* Pods */,
+				99D681AC6E81B767A73E7483 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,12 +101,11 @@
 		90B330E81C3DF16400679BA3 /* RecipeBook */ = {
 			isa = PBXGroup;
 			children = (
+				90F768601C3DF30B0092347B /* CoreData */,
 				90B330E91C3DF16400679BA3 /* AppDelegate.h */,
 				90B330EA1C3DF16400679BA3 /* AppDelegate.m */,
 				90B330F21C3DF16400679BA3 /* Assets.xcassets */,
 				90B330F41C3DF16400679BA3 /* MainMenu.xib */,
-				90B330F71C3DF16400679BA3 /* Info.plist */,
-				90B330EF1C3DF16400679BA3 /* RecipeBook.xcdatamodeld */,
 				90B330EC1C3DF16400679BA3 /* Supporting Files */,
 			);
 			path = RecipeBook;
@@ -92,6 +114,7 @@
 		90B330EC1C3DF16400679BA3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				90B330F71C3DF16400679BA3 /* Info.plist */,
 				90B330ED1C3DF16400679BA3 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -106,6 +129,23 @@
 			path = RecipeBookTests;
 			sourceTree = "<group>";
 		};
+		90F768601C3DF30B0092347B /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				90F768611C3DF30B0092347B /* RecipeBook.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		99D681AC6E81B767A73E7483 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DB179E28E1C4437F44529CB7 /* libPods-RecipeBook.a */,
+				98A18BEE2BF7F954D37884CB /* libPods-RecipeBookTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -113,9 +153,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 90B331051C3DF16400679BA3 /* Build configuration list for PBXNativeTarget "RecipeBook" */;
 			buildPhases = (
+				CF9A748C3E6075CAED6264AC /* Check Pods Manifest.lock */,
 				90B330E21C3DF16400679BA3 /* Sources */,
 				90B330E31C3DF16400679BA3 /* Frameworks */,
 				90B330E41C3DF16400679BA3 /* Resources */,
+				8824D0DB184AC667C1B9BC3E /* Embed Pods Frameworks */,
+				0E523F8862619DBF8F51BEA2 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,9 +173,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 90B331081C3DF16400679BA3 /* Build configuration list for PBXNativeTarget "RecipeBookTests" */;
 			buildPhases = (
+				6516CEB208997C6A3D1AAB30 /* Check Pods Manifest.lock */,
 				90B330F81C3DF16400679BA3 /* Sources */,
 				90B330F91C3DF16400679BA3 /* Frameworks */,
 				90B330FA1C3DF16400679BA3 /* Resources */,
+				91DD0262564893D30E21C83A /* Embed Pods Frameworks */,
+				D3530818CE28D2FB4E612704 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -200,6 +246,99 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0E523F8862619DBF8F51BEA2 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RecipeBook/Pods-RecipeBook-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6516CEB208997C6A3D1AAB30 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8824D0DB184AC667C1B9BC3E /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RecipeBook/Pods-RecipeBook-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		91DD0262564893D30E21C83A /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RecipeBookTests/Pods-RecipeBookTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CF9A748C3E6075CAED6264AC /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D3530818CE28D2FB4E612704 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RecipeBookTests/Pods-RecipeBookTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		90B330E21C3DF16400679BA3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -207,7 +346,7 @@
 			files = (
 				90B330EE1C3DF16400679BA3 /* main.m in Sources */,
 				90B330EB1C3DF16400679BA3 /* AppDelegate.m in Sources */,
-				90B330F11C3DF16400679BA3 /* RecipeBook.xcdatamodeld in Sources */,
+				90F768631C3DF30B0092347B /* RecipeBook.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +461,7 @@
 		};
 		90B331061C3DF16400679BA3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D3E396F8825E5FB310A2085 /* Pods-RecipeBook.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -334,6 +474,7 @@
 		};
 		90B331071C3DF16400679BA3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B604331DA6373CDB210CDFD9 /* Pods-RecipeBook.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -346,6 +487,7 @@
 		};
 		90B331091C3DF16400679BA3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3F9FB74078C36A658FED285A /* Pods-RecipeBookTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -359,6 +501,7 @@
 		};
 		90B3310A1C3DF16400679BA3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E81ADCD11574B99505E46F6 /* Pods-RecipeBookTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -389,6 +532,7 @@
 				90B331071C3DF16400679BA3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		90B331081C3DF16400679BA3 /* Build configuration list for PBXNativeTarget "RecipeBookTests" */ = {
 			isa = XCConfigurationList;
@@ -397,16 +541,17 @@
 				90B3310A1C3DF16400679BA3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		90B330EF1C3DF16400679BA3 /* RecipeBook.xcdatamodeld */ = {
+		90F768611C3DF30B0092347B /* RecipeBook.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				90B330F01C3DF16400679BA3 /* RecipeBook.xcdatamodel */,
+				90F768621C3DF30B0092347B /* RecipeBook.xcdatamodel */,
 			);
-			currentVersion = 90B330F01C3DF16400679BA3 /* RecipeBook.xcdatamodel */;
+			currentVersion = 90F768621C3DF30B0092347B /* RecipeBook.xcdatamodel */;
 			path = RecipeBook.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
