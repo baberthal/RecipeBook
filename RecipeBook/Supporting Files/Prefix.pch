@@ -1,0 +1,26 @@
+//
+//  Prefix.pch
+//  RecipeBook
+//
+//  Created by Morgan Lieberthal on 1/6/16.
+//  Copyright © 2016 Morgan Lieberthal. All rights reserved.
+//
+
+#ifndef Prefix_pch
+#define Prefix_pch
+
+#ifdef __OBJC__
+#import <Cocoa/Cocoa.h>
+
+#define LOG_LEVEL_DEF ddLogLevel
+#import <CocoaLumberjack/CocoaLumberjack.h>
+
+#ifdef DEBUG
+#define MY_LOGGER [DDTTYLogger sharedInstance]
+#else
+#define MY_LOGGER [DDASLLogger sharedInstance]
+#endif /* DEBUG */
+
+#endif /* __OBJC__ */
+
+#endif /* Prefix_pch */
