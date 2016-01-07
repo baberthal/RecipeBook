@@ -17,8 +17,10 @@
 
 #ifdef DEBUG
 #define MY_LOGGER [DDTTYLogger sharedInstance]
+static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
 #else
 #define MY_LOGGER [DDASLLogger sharedInstance]
+static const DDLogLevel ddLogLevel = DDLogLevelWarn;
 #endif /* DEBUG */
 
 #endif /* __OBJC__ */
