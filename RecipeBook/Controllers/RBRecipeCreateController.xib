@@ -7,13 +7,19 @@
         <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="NewRecipeViewController">
+        <customObject id="-2" userLabel="File's Owner" customClass="RBRecipeCreateController">
             <connections>
+                <outlet property="addStepButton" destination="0sY-uE-Lk3" id="E5X-b2-d0l"/>
                 <outlet property="cancelButton" destination="2UQ-do-VIJ" id="Q8n-cp-a1b"/>
                 <outlet property="recipeDescriptionField" destination="tQB-5c-4Sf" id="6EB-ha-9Os"/>
                 <outlet property="recipeNameField" destination="hqV-ax-1oY" id="xkB-PF-BXn"/>
                 <outlet property="recipeRatingIndicator" destination="FDb-2m-zBW" id="bj5-dt-Foj"/>
+                <outlet property="recipeStepTableCtrl" destination="4pd-nv-b5e" id="BLl-p8-d2g"/>
+                <outlet property="recipeStepsArrayCtrl" destination="z94-nv-5zm" id="K83-0e-Kk1"/>
+                <outlet property="recipeStepsBox" destination="Qb1-fp-D4Z" id="Fjh-Q0-FkL"/>
                 <outlet property="saveButton" destination="4ct-P6-aAS" id="cLR-2i-HAt"/>
+                <outlet property="stepTableController" destination="4pd-nv-b5e" id="xMY-M9-7br"/>
+                <outlet property="stepTableView" destination="aRI-Jo-KXu" id="m8Q-lg-Tje"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -94,14 +100,102 @@ Gw
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </box>
-                <box title="Steps" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="Qb1-fp-D4Z">
-                    <rect key="frame" x="33" y="234" width="460" height="114"/>
+                <box verticalHuggingPriority="249" title="Steps" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="Qb1-fp-D4Z">
+                    <rect key="frame" x="33" y="73" width="460" height="275"/>
                     <view key="contentView" id="3VS-u3-etg">
-                        <rect key="frame" x="1" y="1" width="458" height="98"/>
+                        <rect key="frame" x="1" y="1" width="458" height="259"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="29" horizontalPageScroll="10" verticalLineScroll="29" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PPw-fZ-3q0">
+                                <rect key="frame" x="2" y="23" width="454" height="236"/>
+                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="i12-Sp-XKi">
+                                    <rect key="frame" x="0.0" y="0.0" width="454" height="236"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="27" id="aRI-Jo-KXu">
+                                            <rect key="frame" x="0.0" y="0.0" width="454" height="29"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <size key="intercellSpacing" width="3" height="2"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                            <tableColumns>
+                                                <tableColumn identifier="" width="451" minWidth="10" maxWidth="3.4028234663852886e+38" id="Iqv-z8-Iic" userLabel="Recipe Step">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
+                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    </tableHeaderCell>
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Step Text Cell" id="19P-6H-HJ2">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                    <connections>
+                                                        <binding destination="z94-nv-5zm" name="value" keyPath="arrangedObjects.stepText" id="sPO-EJ-oj2"/>
+                                                    </connections>
+                                                </tableColumn>
+                                            </tableColumns>
+                                            <connections>
+                                                <outlet property="dataSource" destination="-2" id="QZ6-pP-8of"/>
+                                                <outlet property="delegate" destination="-2" id="sXV-Oq-cwc"/>
+                                            </connections>
+                                        </tableView>
+                                    </subviews>
+                                    <color key="backgroundColor" name="secondarySelectedControlColor" catalog="System" colorSpace="catalog"/>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="JxU-kj-PwC">
+                                    <rect key="frame" x="1" y="119" width="223" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="ZrH-jZ-p3q">
+                                    <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0sY-uE-Lk3">
+                                <rect key="frame" x="435" y="4" width="19" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="19" id="k6c-IQ-MQi"/>
+                                    <constraint firstAttribute="height" constant="19" id="pKE-o1-Aw0"/>
+                                </constraints>
+                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="4lv-A1-AKd">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="add:" target="z94-nv-5zm" id="hHd-2j-fWv"/>
+                                    <binding destination="z94-nv-5zm" name="enabled" keyPath="canAdd" id="blY-S1-4iY"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3yW-rb-Mfy">
+                                <rect key="frame" x="414" y="4" width="19" height="19"/>
+                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="aeK-JA-oHT">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="remove:" target="z94-nv-5zm" id="9h9-MZ-YPs"/>
+                                    <binding destination="z94-nv-5zm" name="enabled" keyPath="canRemove" id="sTU-ev-G51"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="0sY-uE-Lk3" firstAttribute="leading" secondItem="3yW-rb-Mfy" secondAttribute="trailing" constant="2" id="0eu-6P-YNR"/>
+                            <constraint firstAttribute="trailing" secondItem="0sY-uE-Lk3" secondAttribute="trailing" constant="4" id="BAY-rw-fpL"/>
+                            <constraint firstItem="0sY-uE-Lk3" firstAttribute="bottom" secondItem="3yW-rb-Mfy" secondAttribute="bottom" id="Exq-0F-hrt"/>
+                            <constraint firstItem="0sY-uE-Lk3" firstAttribute="width" secondItem="3yW-rb-Mfy" secondAttribute="width" id="G0Z-Rp-Imv"/>
+                            <constraint firstItem="0sY-uE-Lk3" firstAttribute="top" secondItem="PPw-fZ-3q0" secondAttribute="bottom" id="K5J-ww-VaB"/>
+                            <constraint firstAttribute="trailing" secondItem="PPw-fZ-3q0" secondAttribute="trailing" constant="2" id="MMB-v6-sIp"/>
+                            <constraint firstItem="PPw-fZ-3q0" firstAttribute="top" secondItem="3VS-u3-etg" secondAttribute="top" id="S0C-Y2-uzf"/>
+                            <constraint firstItem="0sY-uE-Lk3" firstAttribute="top" secondItem="3yW-rb-Mfy" secondAttribute="top" id="YMp-0V-lgr"/>
+                            <constraint firstAttribute="bottom" secondItem="0sY-uE-Lk3" secondAttribute="bottom" constant="4" id="rEb-Ru-OE2"/>
+                            <constraint firstItem="PPw-fZ-3q0" firstAttribute="leading" secondItem="3VS-u3-etg" secondAttribute="leading" constant="2" id="rVn-zl-A5h"/>
+                            <constraint firstItem="0sY-uE-Lk3" firstAttribute="height" secondItem="3yW-rb-Mfy" secondAttribute="height" id="wVf-xW-a5f"/>
+                        </constraints>
                     </view>
                     <constraints>
-                        <constraint firstAttribute="height" constant="110" id="l46-bj-uzC"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="110" id="l46-bj-uzC"/>
                     </constraints>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -124,6 +218,7 @@ Gw
                 <constraint firstItem="N0O-FF-9yS" firstAttribute="top" secondItem="hqV-ax-1oY" secondAttribute="bottom" constant="8" id="brA-WY-7dg"/>
                 <constraint firstItem="tQB-5c-4Sf" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="36" id="byS-ps-j1h"/>
                 <constraint firstItem="qW6-ge-phq" firstAttribute="top" secondItem="tQB-5c-4Sf" secondAttribute="bottom" constant="20" id="dS7-5l-mtg"/>
+                <constraint firstItem="2UQ-do-VIJ" firstAttribute="top" secondItem="Qb1-fp-D4Z" secondAttribute="bottom" constant="20" id="drw-7j-DOn"/>
                 <constraint firstAttribute="trailing" secondItem="FDb-2m-zBW" secondAttribute="trailing" constant="36" id="g5O-H1-kh5"/>
                 <constraint firstItem="4ct-P6-aAS" firstAttribute="centerY" secondItem="2UQ-do-VIJ" secondAttribute="centerY" id="gBz-nx-2Bl"/>
                 <constraint firstAttribute="bottom" secondItem="4ct-P6-aAS" secondAttribute="bottom" constant="36" id="iRE-kV-i6n"/>
@@ -134,9 +229,22 @@ Gw
                 <constraint firstItem="Qb1-fp-D4Z" firstAttribute="top" secondItem="qW6-ge-phq" secondAttribute="bottom" constant="20" id="tTg-iz-Auu"/>
                 <constraint firstItem="4ct-P6-aAS" firstAttribute="width" secondItem="2UQ-do-VIJ" secondAttribute="width" id="uex-zO-HNF"/>
             </constraints>
+            <point key="canvasLocation" x="462" y="464"/>
         </customView>
+        <customObject id="4pd-nv-b5e" customClass="RBRecipeStepTableController">
+            <connections>
+                <outlet property="delegate" destination="-2" id="XBy-pP-JjD"/>
+            </connections>
+        </customObject>
+        <arrayController mode="entity" entityName="RecipeStep" automaticallyPreparesContent="YES" id="z94-nv-5zm" userLabel="RecipeSteps">
+            <connections>
+                <binding destination="-2" name="managedObjectContext" keyPath="coreDataManager.managedObjectContext" id="5j7-zM-2aq"/>
+            </connections>
+        </arrayController>
     </objects>
     <resources>
+        <image name="NSAddTemplate" width="11" height="11"/>
+        <image name="NSRemoveTemplate" width="11" height="11"/>
         <image name="ic_star" width="24" height="24"/>
     </resources>
 </document>
