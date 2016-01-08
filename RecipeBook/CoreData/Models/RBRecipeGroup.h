@@ -9,7 +9,7 @@
 #import <CoreData/CoreData.h>
 #import <Foundation/Foundation.h>
 
-@class RBRecipe;
+@class RBRecipe, RBRecipeBook;
 
 NS_ASSUME_NONNULL_BEGIN
 

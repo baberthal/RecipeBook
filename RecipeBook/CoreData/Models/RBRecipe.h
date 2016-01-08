@@ -9,7 +9,7 @@
 #import "RBItem.h"
 #import <Foundation/Foundation.h>
 
-@class RBIngredientAmount, RBRecipeGroup, RBRecipeStep;
+@class RBIngredientAmount, RBRecipeGroup, RBRecipeStep, RBRecipeBook;
 
 NS_ASSUME_NONNULL_BEGIN
 
