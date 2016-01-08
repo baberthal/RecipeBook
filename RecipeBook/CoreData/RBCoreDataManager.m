@@ -223,23 +223,11 @@
     {
         NSMutableArray<RBFavorite *> *items = [NSMutableArray array];
 
-        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Favorite"];
-        NSError *error;
-
-        NSArray<RBFavorite *> *results =
-              [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-
-        if (error) {
-            DDLogError(@"Error fetching favorites: %@\n%@", error.localizedDescription,
-                       error.userInfo);
-        }
-        else {
-            NSSortDescriptor *sortDescriptor =
-                  [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-            [items addObjectsFromArray:[results sortedArrayUsingDescriptors:@[ sortDescriptor ]]];
+        for (RBFavorite *favorite in self.recipeBook.favorites) {
+            [items addObject:favorite];
         }
 
-        _favorites = items;
+        _favorites = [items copy];
     }
 
     return _favorites;
@@ -251,19 +239,15 @@
         return _groups;
     }
 
-    NSArray<RBRecipeGroup *> *groups;
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"RecipeGroup"];
-    NSError *error;
+    @synchronized(self)
+    {
+        NSMutableArray *items = [NSMutableArray array];
 
-    groups = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+        for (RBRecipeGroup *group in self.recipeBook.recipeGroups) {
+            [items addObject:group];
+        }
 
-    if (error) {
-        DDLogError(@"Error fetching RecipeGroups: %@\n%@", error.localizedDescription,
-                   error.userInfo);
-    }
-
-    if (groups && groups.count) {
-        _groups = [NSArray arrayWithArray:groups];
+        _groups = [items copy];
     }
 
     return _groups;
@@ -275,30 +259,18 @@
         return _ungroupedRecipes;
     }
 
-    NSMutableArray<RBRecipe *> *recipes = [NSMutableArray array];
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Recipe"];
-    [fetchRequest
-          setPredicate:[NSPredicate
-                             predicateWithFormat:@"recipeGroup == NIL OR recipeGroup == NULL"]];
-    NSError *error;
+    @synchronized(self)
+    {
+        NSMutableArray *items = [NSMutableArray array];
 
-    NSArray *fetchedObjects =
-          [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+        for (RBRecipe *recipe in self.recipeBook.recipes) {
+            if (!recipe.recipeGroup) {
+                [items addObject:recipe];
+            }
+        }
 
-    if (fetchedObjects == nil) {
-        DDLogWarn(@"Fetched objects was nil when fetching ungrouped recipes");
+        _ungroupedRecipes = [items copy];
     }
-
-    if (error) {
-        DDLogError(@"Error fetching ungrouped recipes: %@\n%@", error.localizedDescription,
-                   error.userInfo);
-    }
-
-    if (fetchedObjects) {
-        [recipes addObjectsFromArray:fetchedObjects];
-    }
-
-    _ungroupedRecipes = recipes;
 
     return _ungroupedRecipes;
 }
