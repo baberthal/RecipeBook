@@ -8,6 +8,15 @@
 
 #import "RBCoreDataManager.h"
 #import "RBFavorite.h"
+#import "RBRecipe.h"
+#import "RBRecipeBook.h"
+#import "RBRecipeGroup.h"
+
+@interface RBCoreDataManager ()
+
+@property(readonly) NSDictionary *coreDataOptions;
+
+@end
 
 @implementation RBCoreDataManager
 
@@ -22,6 +31,23 @@
     });
 
     return _sharedManager;
+}
+
+#pragma mark - Properties
+@synthesize coreDataOptions = _coreDataOptions;
+
+- (NSDictionary *)coreDataOptions
+{
+    if (_coreDataOptions) {
+        return _coreDataOptions;
+    }
+
+    _coreDataOptions = @{
+        NSMigratePersistentStoresAutomaticallyOption : @YES,
+        NSInferMappingModelAutomaticallyOption : @YES
+    };
+
+    return _coreDataOptions;
 }
 
 #pragma mark - Core Data stack
@@ -98,7 +124,7 @@
         if (![coordinator addPersistentStoreWithType:NSXMLStoreType
                                        configuration:nil
                                                  URL:url
-                                             options:nil
+                                             options:self.coreDataOptions
                                                error:&error]) {
             coordinator = nil;
         }
@@ -155,6 +181,37 @@
 
 #pragma mark - Properties
 @synthesize favorites = _favorites;
+@synthesize groups = _groups;
+@synthesize ungroupedRecipes = _ungroupedRecipes;
+@synthesize recipeBook = _recipeBook;
+
+- (RBRecipeBook *)recipeBook
+{
+    if (_recipeBook) {
+        return _recipeBook;
+    }
+
+    // Create or Load the Recipe Book Entity
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"RecipeBook"];
+    NSError *error;
+
+    _recipeBook =
+          [[self.managedObjectContext executeFetchRequest:fetchRequest error:&error] lastObject];
+
+    if (error) {
+        DDLogError(@"Failed to fetch the recipe book: %@\n%@", error.localizedDescription,
+                   error.userInfo);
+    }
+
+    if (!_recipeBook) {
+        // The book doesn't exist, so we have to create it
+        _recipeBook =
+              [NSEntityDescription insertNewObjectForEntityForName:@"RecipeBook"
+                                            inManagedObjectContext:self.managedObjectContext];
+    }
+
+    return _recipeBook;
+}
 
 - (NSArray<RBFavorite *> *)favorites
 {
@@ -182,10 +239,68 @@
             [items addObjectsFromArray:[results sortedArrayUsingDescriptors:@[ sortDescriptor ]]];
         }
 
-        _favorites = [items copy];
+        _favorites = items;
     }
 
     return _favorites;
+}
+
+- (NSArray<RBRecipeGroup *> *)groups
+{
+    if (_groups) {
+        return _groups;
+    }
+
+    NSArray<RBRecipeGroup *> *groups;
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"RecipeGroup"];
+    NSError *error;
+
+    groups = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+
+    if (error) {
+        DDLogError(@"Error fetching RecipeGroups: %@\n%@", error.localizedDescription,
+                   error.userInfo);
+    }
+
+    if (groups && groups.count) {
+        _groups = [NSArray arrayWithArray:groups];
+    }
+
+    return _groups;
+}
+
+- (NSArray<RBRecipe *> *)ungroupedRecipes
+{
+    if (_ungroupedRecipes) {
+        return _ungroupedRecipes;
+    }
+
+    NSMutableArray<RBRecipe *> *recipes = [NSMutableArray array];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Recipe"];
+    [fetchRequest
+          setPredicate:[NSPredicate
+                             predicateWithFormat:@"recipeGroup == NIL OR recipeGroup == NULL"]];
+    NSError *error;
+
+    NSArray *fetchedObjects =
+          [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+
+    if (fetchedObjects == nil) {
+        DDLogWarn(@"Fetched objects was nil when fetching ungrouped recipes");
+    }
+
+    if (error) {
+        DDLogError(@"Error fetching ungrouped recipes: %@\n%@", error.localizedDescription,
+                   error.userInfo);
+    }
+
+    if (fetchedObjects) {
+        [recipes addObjectsFromArray:fetchedObjects];
+    }
+
+    _ungroupedRecipes = recipes;
+
+    return _ungroupedRecipes;
 }
 
 @end

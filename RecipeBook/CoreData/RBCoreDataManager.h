@@ -10,7 +10,8 @@
 #import <CoreData/CoreData.h>
 #import <Foundation/Foundation.h>
 
-@class RBFavorite, RBItem;
+@class RBFavorite, RBItem, RBRecipeGroup, RBRecipe;
+@class RBRecipeBook;
 
 @interface RBCoreDataManager : NSObject
 
@@ -20,6 +21,11 @@
 
 + (instancetype)sharedManager;
 
+- (void)saveAction:(id)sender;
+
+@property(readonly, strong, nonatomic) RBRecipeBook *recipeBook;
 @property(readonly) IBOutlet NSArray<RBFavorite *> *favorites;
+@property(readonly) NSArray<RBRecipeGroup *> *groups;
+@property(readonly) NSArray<RBRecipe *> *ungroupedRecipes;
 
 @end
