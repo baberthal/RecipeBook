@@ -6,8 +6,8 @@
 //  Copyright © 2016 Morgan Lieberthal. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import <Foundation/Foundation.h>
 
 @class RBItem;
 

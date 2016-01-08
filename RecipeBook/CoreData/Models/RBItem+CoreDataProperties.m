@@ -2,7 +2,7 @@
 //  RBItem+CoreDataProperties.m
 //  RecipeBook
 //
-//  Created by Morgan Lieberthal on 1/6/16.
+//  Created by Morgan Lieberthal on 1/8/16.
 //  Copyright © 2016 Morgan Lieberthal. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -13,9 +13,9 @@
 
 @implementation RBItem (CoreDataProperties)
 
-@dynamic name;
 @dynamic imageData;
 @dynamic imageName;
+@dynamic name;
 @dynamic favorites;
 
 @end

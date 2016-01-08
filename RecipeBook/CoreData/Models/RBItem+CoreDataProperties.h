@@ -2,7 +2,7 @@
 //  RBItem+CoreDataProperties.h
 //  RecipeBook
 //
-//  Created by Morgan Lieberthal on 1/6/16.
+//  Created by Morgan Lieberthal on 1/8/16.
 //  Copyright © 2016 Morgan Lieberthal. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -15,10 +15,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RBItem (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSString *name;
-@property (nullable, nonatomic, retain) NSData *imageData;
-@property (nullable, nonatomic, retain) NSString *imageName;
-@property (nullable, nonatomic, retain) NSSet<RBFavorite *> *favorites;
+@property(nullable, nonatomic, retain) NSData *imageData;
+@property(nullable, nonatomic, retain) NSString *imageName;
+@property(nullable, nonatomic, retain) NSString *name;
+@property(nullable, nonatomic, retain) NSSet<RBFavorite *> *favorites;
 
 @end
 

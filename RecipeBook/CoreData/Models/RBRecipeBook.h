@@ -1,19 +1,19 @@
 //
-//  RBRecipe.h
+//  RBRecipeBook.h
 //  RecipeBook
 //
-//  Created by Morgan Lieberthal on 1/6/16.
+//  Created by Morgan Lieberthal on 1/8/16.
 //  Copyright © 2016 Morgan Lieberthal. All rights reserved.
 //
 
-#import "RBItem.h"
+#import <CoreData/CoreData.h>
 #import <Foundation/Foundation.h>
 
-@class RBIngredientAmount, RBRecipeGroup, RBRecipeStep;
+@class RBFavorite, RBRecipe, RBRecipeGroup;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RBRecipe : RBItem
+@interface RBRecipeBook : NSManagedObject
 
 // Insert code here to declare functionality of your managed object subclass
 
@@ -21,4 +21,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 NS_ASSUME_NONNULL_END
 
-#import "RBRecipe+CoreDataProperties.h"
+#import "RBRecipeBook+CoreDataProperties.h"

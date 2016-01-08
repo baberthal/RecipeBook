@@ -2,7 +2,7 @@
 //  RBIngredient+CoreDataProperties.h
 //  RecipeBook
 //
-//  Created by Morgan Lieberthal on 1/6/16.
+//  Created by Morgan Lieberthal on 1/8/16.
 //  Copyright © 2016 Morgan Lieberthal. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -15,8 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RBIngredient (CoreDataProperties)
 
-@property (nonatomic) int32_t ingredientType;
-@property (nullable, nonatomic, retain) NSSet<RBIngredientAmount *> *recipeAmounts;
+@property(nullable, nonatomic, retain) NSNumber *ingredientType;
+@property(nullable, nonatomic, retain) NSSet<RBIngredientAmount *> *recipeAmounts;
 
 @end
 

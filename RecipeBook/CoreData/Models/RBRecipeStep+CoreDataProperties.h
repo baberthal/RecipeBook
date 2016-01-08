@@ -2,7 +2,7 @@
 //  RBRecipeStep+CoreDataProperties.h
 //  RecipeBook
 //
-//  Created by Morgan Lieberthal on 1/6/16.
+//  Created by Morgan Lieberthal on 1/8/16.
 //  Copyright © 2016 Morgan Lieberthal. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -15,8 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RBRecipeStep (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSString *stepText;
-@property (nullable, nonatomic, retain) RBRecipe *recipe;
+@property(nullable, nonatomic, retain) NSString *stepText;
+@property(nullable, nonatomic, retain) RBRecipe *recipe;
 
 @end
 

@@ -7,10 +7,9 @@
 //
 
 #import "RBRecipeStep.h"
+#import "RBCoreDataManager.h"
 #import "RBRecipe.h"
 
 @implementation RBRecipeStep
-
-// Insert code here to add functionality to your managed object subclass
 
 @end

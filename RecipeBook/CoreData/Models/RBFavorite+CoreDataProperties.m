@@ -2,7 +2,7 @@
 //  RBFavorite+CoreDataProperties.m
 //  RecipeBook
 //
-//  Created by Morgan Lieberthal on 1/6/16.
+//  Created by Morgan Lieberthal on 1/8/16.
 //  Copyright © 2016 Morgan Lieberthal. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,5 +14,6 @@
 @implementation RBFavorite (CoreDataProperties)
 
 @dynamic item;
+@dynamic recipeBook;
 
 @end

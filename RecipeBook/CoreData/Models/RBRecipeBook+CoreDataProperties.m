@@ -1,5 +1,5 @@
 //
-//  RBFavorite+CoreDataProperties.h
+//  RBRecipeBook+CoreDataProperties.m
 //  RecipeBook
 //
 //  Created by Morgan Lieberthal on 1/8/16.
@@ -9,15 +9,14 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "RBFavorite.h"
+#import "RBRecipeBook+CoreDataProperties.h"
 
-NS_ASSUME_NONNULL_BEGIN
+@implementation RBRecipeBook (CoreDataProperties)
 
-@interface RBFavorite (CoreDataProperties)
-
-@property(nullable, nonatomic, retain) RBItem *item;
-@property(nullable, nonatomic, retain) RBRecipeBook *recipeBook;
+@dynamic displayMetricUnits;
+@dynamic bookName;
+@dynamic favorites;
+@dynamic recipeGroups;
+@dynamic recipes;
 
 @end
-
-NS_ASSUME_NONNULL_END

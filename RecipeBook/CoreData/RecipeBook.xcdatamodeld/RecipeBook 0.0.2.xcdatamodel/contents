@@ -2,6 +2,7 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15C50" minimumToolsVersion="Automatic">
     <entity name="Favorite" representedClassName="RBFavorite" syncable="YES">
         <relationship name="item" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Item" inverseName="favorites" inverseEntity="Item" syncable="YES"/>
+        <relationship name="recipeBook" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RecipeBook" inverseName="favorites" inverseEntity="RecipeBook" syncable="YES"/>
     </entity>
     <entity name="Ingredient" representedClassName="RBIngredient" parentEntity="Item" syncable="YES">
         <attribute name="ingredientType" attributeType="Integer 32" defaultValueString="-1" syncable="YES"/>
@@ -23,24 +24,34 @@
         <attribute name="recipeDescription" attributeType="String" maxValueString="200" defaultValueString="&quot;&quot;" syncable="YES"/>
         <attribute name="stars" attributeType="Integer 16" minValueString="0" maxValueString="10" defaultValueString="0" syncable="YES"/>
         <relationship name="ingredientAmounts" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="IngredientAmount" inverseName="recipe" inverseEntity="IngredientAmount" syncable="YES"/>
+        <relationship name="recipeBook" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RecipeBook" inverseName="recipes" inverseEntity="RecipeBook" syncable="YES"/>
         <relationship name="recipeGroup" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RecipeGroup" inverseName="recipes" inverseEntity="RecipeGroup" syncable="YES"/>
         <relationship name="steps" toMany="YES" minCount="1" deletionRule="Cascade" ordered="YES" destinationEntity="RecipeStep" inverseName="recipe" inverseEntity="RecipeStep" syncable="YES"/>
     </entity>
+    <entity name="RecipeBook" representedClassName="RBRecipeBook" syncable="YES">
+        <attribute name="bookName" attributeType="String" defaultValueString="My Recipe Book" syncable="YES"/>
+        <attribute name="displayMetricUnits" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <relationship name="favorites" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Favorite" inverseName="recipeBook" inverseEntity="Favorite" syncable="YES"/>
+        <relationship name="recipeGroups" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="RecipeGroup" inverseName="recipeBook" inverseEntity="RecipeGroup" syncable="YES"/>
+        <relationship name="recipes" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Recipe" inverseName="recipeBook" inverseEntity="Recipe" syncable="YES"/>
+    </entity>
     <entity name="RecipeGroup" representedClassName="RBRecipeGroup" syncable="YES">
         <attribute name="groupName" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="recipes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Recipe" inverseName="recipeGroup" inverseEntity="Recipe" syncable="YES"/>
+        <relationship name="recipeBook" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RecipeBook" inverseName="recipeGroups" inverseEntity="RecipeBook" syncable="YES"/>
+        <relationship name="recipes" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Recipe" inverseName="recipeGroup" inverseEntity="Recipe" syncable="YES"/>
     </entity>
     <entity name="RecipeStep" representedClassName="RBRecipeStep" syncable="YES">
         <attribute name="stepText" attributeType="String" defaultValueString="Step description..." syncable="YES"/>
         <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="steps" inverseEntity="Recipe" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Favorite" positionX="36" positionY="81" width="128" height="60"/>
+        <element name="Favorite" positionX="36" positionY="81" width="128" height="75"/>
         <element name="Ingredient" positionX="-63" positionY="-18" width="128" height="75"/>
         <element name="IngredientAmount" positionX="-54" positionY="-9" width="128" height="105"/>
         <element name="Item" positionX="-9" positionY="36" width="128" height="105"/>
-        <element name="Recipe" positionX="-18" positionY="27" width="128" height="120"/>
-        <element name="RecipeGroup" positionX="0" positionY="45" width="128" height="75"/>
+        <element name="Recipe" positionX="-18" positionY="27" width="128" height="135"/>
+        <element name="RecipeGroup" positionX="0" positionY="45" width="128" height="90"/>
         <element name="RecipeStep" positionX="18" positionY="63" width="128" height="73"/>
+        <element name="RecipeBook" positionX="-18" positionY="54" width="128" height="120"/>
     </elements>
 </model>
