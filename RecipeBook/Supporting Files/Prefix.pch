@@ -23,6 +23,8 @@ static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
 static const DDLogLevel ddLogLevel = DDLogLevelWarn;
 #endif /* DEBUG */
 
+#define RBAbstractMethod() NSAssert(NO, @"This is an abstract method that must be overridden!")
+
 #endif /* __OBJC__ */
 
 #endif /* Prefix_pch */
