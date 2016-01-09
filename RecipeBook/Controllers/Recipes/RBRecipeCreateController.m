@@ -7,7 +7,6 @@
 //
 
 #import "RBRecipe.h"
-#import "NewStepTableCellView.h"
 #import "RBCoreDataManager.h"
 #import "RBRecipeCreateController.h"
 #import "RBRecipeStep.h"
