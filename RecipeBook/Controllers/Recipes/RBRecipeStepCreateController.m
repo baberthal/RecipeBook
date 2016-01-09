@@ -11,6 +11,7 @@
 #import "RBRecipe.h"
 #import "RBRecipeStep.h"
 #import "RBRecipeStepTableCellView.h"
+#import "RBRecipeStepTableRowView.h"
 
 @implementation RBRecipeStepCreateController
 
@@ -49,6 +50,11 @@
 
 #pragma mark - NSTableView DataSource / Delegate Methods
 
+- (RBRecipeStep *)recipeStepForRow:(NSInteger)row
+{
+    return [self.recipeSteps objectAtIndex:row];
+}
+
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
     return self.recipeSteps.count;
@@ -74,6 +80,32 @@
     return view;
 }
 
+- (NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row
+{
+    NSRect rowFrame = CGRectMake(0, 0, self.tableView.frame.size.width, 28);
+
+    RBRecipeStepTableRowView *rowView = [[RBRecipeStepTableRowView alloc] initWithFrame:rowFrame];
+    [rowView setObjectValue:[self recipeStepForRow:row]];
+    return rowView;
+}
+
+- (void)tableViewSelectionDidChange:(NSNotification *)notification
+{
+    NSIndexSet *selectedRows = self.tableView.selectedRowIndexes;
+    DDLogDebug(@"%s", __PRETTY_FUNCTION__);
+    DDLogDebug(@"Selected Rows: %@", selectedRows);
+}
+
+- (void)tableView:(NSTableView *)tableView
+    didAddRowView:(NSTableRowView *)rowView
+           forRow:(NSInteger)row
+{
+    DDLogDebug(@"%s - Row: %ld", __PRETTY_FUNCTION__, row);
+    [self moveFocusToViewForRow:row];
+}
+
+#pragma mark - Actions
+
 - (IBAction)btnInsertNewStep:(id)sender
 {
     RBRecipeStep *newStep = [NSEntityDescription
@@ -95,23 +127,13 @@
     [self.tableView insertRowsAtIndexes:[NSIndexSet indexSetWithIndex:idx]
                           withAnimation:NSTableViewAnimationEffectFade];
 
-    [self moveFocusToViewForRow:idx];
+    [self.tableView scrollRowToVisible:idx];
     [self.tableView endUpdates];
 }
 
 - (void)moveFocusToViewForRow:(NSInteger)row
 {
-    [self.tableView scrollRowToVisible:row];
-
-    RBRecipeStepTableCellView *view =
-          [self.tableView viewAtColumn:[self.tableView.tableColumns count] - 1
-                                   row:row
-                       makeIfNecessary:NO];
-
-    if (!view) {
-        return;
-    }
-
+    RBRecipeStepTableCellView *view = [self.tableView viewAtColumn:0 row:row makeIfNecessary:NO];
     [view.textField becomeFirstResponder];
 }
 

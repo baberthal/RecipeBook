@@ -14,28 +14,65 @@
 #import "RBTableLineNumberRulerView.h"
 
 @interface RBRecipeCreateController ()
-{
-    RBRecipe *newRecipe;
-}
+
+@property(nonatomic, assign, getter=isEditing) BOOL editing;
+
 @end
 
 @implementation RBRecipeCreateController
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    newRecipe = [NSEntityDescription
-          insertNewObjectForEntityForName:@"Recipe"
-                   inManagedObjectContext:self.coreDataManager.managedObjectContext];
+#pragma mark - Properties
 
-    [self.recipeStepCreateController setCurrentRecipe:newRecipe];
-    DDLogDebug(@"%s", __PRETTY_FUNCTION__);
-}
+@synthesize currentRecipe = _currentRecipe;
+@synthesize newRecipe = _hasNewRecipe;
+@synthesize editing = _isEditing;
 
 - (RBCoreDataManager *)coreDataManager
 {
     return [RBCoreDataManager sharedManager];
 }
+
+- (BOOL)isEditing
+{
+    return _isEditing;
+}
+
+- (void)setEditing:(BOOL)editing
+{
+    [self internalSetEditing:editing];
+    _isEditing = editing;
+}
+
+- (void)internalSetEditing:(BOOL)flag
+{
+    BOOL buttonsHidden = !flag;
+    BOOL textFieldsBorderedAndEditable = flag;
+
+    self.saveButton.hidden = buttonsHidden;
+    self.cancelButton.hidden = buttonsHidden;
+    self.recipeNameField.bordered = textFieldsBorderedAndEditable;
+    self.recipeNameField.editable = textFieldsBorderedAndEditable;
+    self.recipeDescriptionField.bordered = textFieldsBorderedAndEditable;
+    self.recipeDescriptionField.editable = textFieldsBorderedAndEditable;
+    self.addStepButton.enabled = textFieldsBorderedAndEditable;
+    self.recipeRatingIndicator.enabled = textFieldsBorderedAndEditable;
+}
+
+- (BOOL)isNewRecipe
+{
+    return _hasNewRecipe;
+}
+
+- (void)setNewRecipe:(BOOL)newRecipe
+{
+    if (newRecipe) {
+        [self setEditing:YES];
+    }
+
+    _hasNewRecipe = newRecipe;
+}
+
+#pragma mark - IBActions
 
 - (IBAction)cancelButtonPressed:(id)sender
 {
@@ -48,27 +85,15 @@
     [self dismissSelf];
 }
 
-- (void)dismissSelf
-{
-    [self.view removeFromSuperview];
-}
-
 - (void)insertRecipe
 {
-    newRecipe.name = self.recipeNameField.stringValue;
-    newRecipe.recipeDescription = self.recipeDescriptionField.stringValue;
-    newRecipe.stars = self.recipeRatingIndicator.integerValue;
+    self.currentRecipe.name = self.recipeNameField.stringValue;
+    self.currentRecipe.recipeDescription = self.recipeDescriptionField.stringValue;
+    self.currentRecipe.stars = self.recipeRatingIndicator.integerValue;
+    self.currentRecipe.recipeBook = self.coreDataManager.recipeBook;
 
-    NSArray<RBRecipeStep *> *steps = self.recipeStepsArrayCtrl.arrangedObjects;
-    NSMutableOrderedSet<RBRecipeStep *> *finalSteps;
-
-    for (RBRecipeStep *step in steps) {
-        step.recipe = newRecipe;
-        [finalSteps addObject:step];
-    }
-
-    [newRecipe addSteps:finalSteps];
-
+    NSOrderedSet<RBRecipeStep *> *steps = self.recipeStepCreateController.recipeSteps;
+    [self.currentRecipe setSteps:steps];
     [self.coreDataManager saveAction:self];
 }
 
@@ -80,9 +105,52 @@
 {
 }
 
-- (void)newRecipeStepAdded:(RBRecipeStep *)newStep
+#pragma mark - View Lifecycle Events
+
+- (void)viewDidLoad
 {
-    newStep.recipe = newRecipe;
+    [super viewDidLoad];
+    [self addObserver:self forKeyPath:keypath(currentRecipe) options:0 context:nil];
+    [self addObserver:self forKeyPath:keypath(isEditing) options:0 context:nil];
+    [self addObserver:self forKeyPath:keypath(isNewRecipe) options:0 context:nil];
+}
+
+- (void)dealloc
+{
+    [self removeObserver:self forKeyPath:keypath(currentRecipe)];
+    [self removeObserver:self forKeyPath:keypath(isEditing)];
+    [self removeObserver:self forKeyPath:keypath(isNewRecipe)];
+}
+
+- (void)viewDidAppear
+{
+    [self.recipeNameField becomeFirstResponder];
+}
+
+- (void)dismissSelf
+{
+    [NSAnimationContext beginGrouping];
+    [[NSAnimationContext currentContext] setDuration:2.0];
+    [[self.view animator] removeFromSuperview];
+    [NSAnimationContext endGrouping];
+}
+
+#pragma mark - KVO
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary<NSString *, id> *)change
+                       context:(void *)context
+{
+    DDLogDebug(@"%@ changed.", keyPath);
+
+    if ([keyPath isEqualToString:keypath(currentRecipe)]) {
+        [self.recipeStepCreateController setCurrentRecipe:self.currentRecipe];
+    }
+    else if ([keyPath isEqualToString:keypath(isEditing)]) {
+    }
+    else if ([keyPath isEqualToString:keypath(isNewRecipe)]) {
+    }
 }
 
 @end

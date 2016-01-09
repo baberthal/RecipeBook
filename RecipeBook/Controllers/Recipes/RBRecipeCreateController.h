@@ -7,18 +7,14 @@
 //
 
 @class RBCoreDataManager;
-@class RBRecipeStepTableController, RBIngredientTableController;
 @class RBRecipeStepCreateController;
-
-@protocol NewRecipeViewControllerDelegate <NSObject>
-
-- (void)shouldDismissController:(id)sender;
-
-@end
+@class RBWelcomeViewController;
+@class RBRecipe;
 
 @interface RBRecipeCreateController : NSViewController <NSTableViewDataSource, NSTableViewDelegate>
 
 @property(readonly) RBCoreDataManager *coreDataManager;
+
 @property(strong) IBOutlet RBRecipeStepCreateController *recipeStepCreateController;
 
 @property(weak) IBOutlet NSButton *saveButton;
@@ -31,8 +27,7 @@
 @property(weak) IBOutlet NSButton *addStepButton;
 @property(weak) IBOutlet NSBox *recipeStepsBox;
 
-@property(assign) IBOutlet id<NewRecipeViewControllerDelegate> delegate;
-
-- (IBAction)addNewStep:(id)sender;
+@property(strong) RBRecipe *currentRecipe;
+@property(nonatomic, assign, getter=isNewRecipe) BOOL newRecipe;
 
 @end
