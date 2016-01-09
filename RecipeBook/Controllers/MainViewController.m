@@ -11,6 +11,8 @@
 #import "RBRecipe.h"
 #import "RBRecipeCreateController.h"
 #import "RBRecipeGroup.h"
+#import "RBRecipeShowViewController.h"
+#import "RBWelcomeViewController.h"
 
 @interface MainViewController ()
 
@@ -160,20 +162,31 @@
     return children;
 }
 
-#pragma mark - IBActions
+#pragma mark - Model Actions
 
 - (void)addNewGroup:(NSMenuItem *)sender
 {
 }
 
-- (void)addNewRecipe:(NSMenuItem *)sender
+- (void)addNewRecipe:(id)sender
 {
     RBRecipeCreateController *newVC = [[RBRecipeCreateController alloc]
           initWithNibName:NSStringFromClass([RBRecipeCreateController class])
                    bundle:nil];
-    newVC.delegate = self;
+
+    [newVC setCurrentRecipe:[NSEntityDescription
+                                  insertNewObjectForEntityForName:@"Recipe"
+                                           inManagedObjectContext:self.coreDataManager
+                                                                        .managedObjectContext]];
+
+    [newVC setNewRecipe:YES];
+
     [self addChildViewController:newVC];
-    [self.recipeContentView addSubview:newVC.view];
+
+    [NSAnimationContext beginGrouping];
+    [[NSAnimationContext currentContext] setDuration:2.0];
+    [[self.recipeContentView animator] addSubview:newVC.view];
+    [NSAnimationContext endGrouping];
 }
 
 #pragma mark - View Lifecycle Events
@@ -192,7 +205,45 @@
     [NSAnimationContext endGrouping];
 
     if (!self.coreDataManager.allRecipes || !self.coreDataManager.allRecipes.count) {
+        [self showWelcomeController:self];
     }
+    else {
+        [self showRecipe:self.coreDataManager.allRecipes.firstObject];
+    }
+    NSLog(@"All Recipes: %@", self.coreDataManager.allRecipes);
+    NSLog(@"Ungrouped Recipes: %@", self.coreDataManager.ungroupedRecipes);
+}
+
+- (void)showWelcomeController:(id)sender
+{
+    RBWelcomeViewController *welcomeController = [[RBWelcomeViewController alloc]
+          initWithNibName:NSStringFromClass([RBWelcomeViewController class])
+                   bundle:nil];
+
+    [welcomeController setDelegate:self];
+
+    [self addChildViewController:welcomeController];
+
+    [NSAnimationContext beginGrouping];
+    [[NSAnimationContext currentContext] setDuration:2.0];
+    [[self.recipeContentView animator] addSubview:welcomeController.view];
+    [NSAnimationContext endGrouping];
+}
+
+- (void)showRecipe:(RBRecipe *)recipe
+{
+    RBRecipeShowViewController *showController = [[RBRecipeShowViewController alloc]
+          initWithNibName:NSStringFromClass([RBRecipeShowViewController class])
+                   bundle:nil];
+
+    [showController setCurrentRecipe:recipe];
+
+    [self addChildViewController:showController];
+
+    [NSAnimationContext beginGrouping];
+    [[NSAnimationContext currentContext] setDuration:5.0];
+    [[self.recipeContentView animator] addSubview:showController.view];
+    [NSAnimationContext endGrouping];
 }
 
 #pragma mark - NSOutlineViewDataSource
@@ -250,9 +301,11 @@
     return result;
 }
 
-#pragma mark - NewRecipeViewControllerDelegate
-- (void)shouldDismissController:(id)sender
+#pragma mark - WelcomeViewController Delegate Methods
+- (void)welcomeViewController:(RBWelcomeViewController *)welcomeController
+       addNewRecipeFromSender:(id)sender
 {
+    [self addNewRecipe:sender];
 }
 
 @end

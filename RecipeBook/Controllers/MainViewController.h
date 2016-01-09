@@ -7,12 +7,14 @@
 //
 
 #import "RBRecipeCreateController.h"
+#import "RBWelcomeViewController.h"
 #import <Cocoa/Cocoa.h>
 
 @class RBCoreDataManager, RBFavorite;
+@class RBWelcomeViewController;
 
 @interface MainViewController : NSViewController <NSOutlineViewDataSource, NSOutlineViewDelegate,
-                                                  NewRecipeViewControllerDelegate>
+                                                  RBWelcomeViewControllerDelegate>
 
 @property(readonly) IBOutlet RBCoreDataManager *coreDataManager;
 
@@ -24,7 +26,7 @@
 @property(weak) IBOutlet NSOutlineView *sidebarView;
 
 - (IBAction)addNewGroup:(NSMenuItem *)sender;
-- (IBAction)addNewRecipe:(NSMenuItem *)sender;
+- (IBAction)addNewRecipe:(id)sender;
 
 - (void)setNeedsResetHeaderItems;
 
