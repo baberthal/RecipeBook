@@ -28,6 +28,7 @@
                 <outlet property="addButton" destination="OGb-U1-leG" id="ort-8E-DWx"/>
                 <outlet property="addMenu" destination="jAA-h2-8UD" id="And-Vg-7OF"/>
                 <outlet property="recipeContentView" destination="nak-1c-o8E" id="pjG-Gh-ixV"/>
+                <outlet property="sidebarView" destination="fwj-vv-E8f" id="tSS-q3-Kjp"/>
                 <outlet property="view" destination="EiT-Mj-1SZ" id="vCh-je-1Rc"/>
             </connections>
         </customObject>
@@ -768,6 +769,10 @@
                                                                     </prototypeCellViews>
                                                                 </tableColumn>
                                                             </tableColumns>
+                                                            <connections>
+                                                                <outlet property="dataSource" destination="aH2-Lv-XaZ" id="6Ai-JL-0YF"/>
+                                                                <outlet property="delegate" destination="aH2-Lv-XaZ" id="rzN-oH-PGg"/>
+                                                            </connections>
                                                         </outlineView>
                                                     </subviews>
                                                     <nil key="backgroundColor"/>
@@ -936,9 +941,15 @@
             <items>
                 <menuItem title="Recipe..." id="Nu7-Il-rG1" userLabel="Recipe...">
                     <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="addNewRecipe:" target="aH2-Lv-XaZ" id="B8i-PW-20H"/>
+                    </connections>
                 </menuItem>
                 <menuItem title="Group..." id="Bdn-ic-oSB" userLabel="Group...">
                     <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="addNewGroup:" target="aH2-Lv-XaZ" id="oPl-21-UhR"/>
+                    </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="4Pa-jt-6f2"/>
                 <menuItem title="Import Recipes..." id="GeZ-7a-gqn">
@@ -947,6 +958,11 @@
             </items>
             <point key="canvasLocation" x="1158" y="500.5"/>
         </menu>
+        <customView id="3RF-gX-vAZ">
+            <rect key="frame" x="0.0" y="0.0" width="163" height="162"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <point key="canvasLocation" x="103.5" y="730"/>
+        </customView>
     </objects>
     <resources>
         <image name="JMLToolbarPrint" width="18" height="18"/>
