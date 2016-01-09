@@ -14,5 +14,6 @@
 
 @property(assign) IBOutlet NSTextField *stepNumberField;
 @property(assign) IBOutlet NSButton *stepActionButton;
+@property(readonly) BOOL textFieldShouldShowBorder;
 
 @end

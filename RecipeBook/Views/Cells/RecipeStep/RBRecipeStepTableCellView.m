@@ -10,4 +10,9 @@
 
 @implementation RBRecipeStepTableCellView
 
+- (BOOL)textFieldShouldShowBorder
+{
+    return YES;
+}
+
 @end

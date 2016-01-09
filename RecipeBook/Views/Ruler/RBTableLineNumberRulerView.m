@@ -11,8 +11,6 @@
 #define DEFAULT_WIDTH 22.0
 #define RULER_MARGIN 5.0
 
-#define keypath(PATH) NSStringFromSelector(@selector(PATH))
-
 @implementation RBTableLineNumberRulerView
 
 @synthesize font = _font;
