@@ -15,16 +15,11 @@
 #define LOG_LEVEL_DEF ddLogLevel
 #import <CocoaLumberjack/CocoaLumberjack.h>
 
-#ifdef DEBUG
-#define MY_LOGGER [DDTTYLogger sharedInstance]
-static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
-#else
-#define MY_LOGGER [DDASLLogger sharedInstance]
-static const DDLogLevel ddLogLevel = DDLogLevelWarn;
-#endif /* DEBUG */
-
 #define RBAbstractMethod() NSAssert(NO, @"This is an abstract method that must be overridden!")
+#define keypath(M) NSStringFromSelector(@selector(M))
 
 #endif /* __OBJC__ */
+
+static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
 
 #endif /* Prefix_pch */
