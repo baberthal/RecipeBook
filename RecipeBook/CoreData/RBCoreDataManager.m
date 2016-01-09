@@ -35,6 +35,11 @@
 
 #pragma mark - Properties
 @synthesize coreDataOptions = _coreDataOptions;
+@synthesize recipeBook = _recipeBook;
+@synthesize favorites = _favorites;
+@synthesize groups = _groups;
+@synthesize ungroupedRecipes = _ungroupedRecipes;
+@synthesize allRecipes = _allRecipes;
 
 - (NSDictionary *)coreDataOptions
 {
@@ -48,6 +53,117 @@
     };
 
     return _coreDataOptions;
+}
+
+- (RBRecipeBook *)recipeBook
+{
+    if (_recipeBook) {
+        return _recipeBook;
+    }
+
+    // Create or Load the Recipe Book Entity
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"RecipeBook"];
+    NSError *error;
+
+    _recipeBook =
+          [[self.managedObjectContext executeFetchRequest:fetchRequest error:&error] lastObject];
+
+    if (error) {
+        DDLogError(@"Failed to fetch the recipe book: %@\n%@", error.localizedDescription,
+                   error.userInfo);
+    }
+
+    if (!_recipeBook) {
+        // The book doesn't exist, so we have to create it
+        _recipeBook =
+              [NSEntityDescription insertNewObjectForEntityForName:@"RecipeBook"
+                                            inManagedObjectContext:self.managedObjectContext];
+    }
+
+    return _recipeBook;
+}
+
+- (NSArray<RBFavorite *> *)favorites
+{
+    if (_favorites) {
+        return _favorites;
+    }
+
+    @synchronized(self)
+    {
+        NSMutableArray<RBFavorite *> *items = [NSMutableArray array];
+
+        for (RBFavorite *favorite in self.recipeBook.favorites) {
+            [items addObject:favorite];
+        }
+
+        _favorites = [items copy];
+    }
+
+    return _favorites;
+}
+
+- (NSArray<RBRecipeGroup *> *)groups
+{
+    if (_groups) {
+        return _groups;
+    }
+
+    @synchronized(self)
+    {
+        NSMutableArray *items = [NSMutableArray array];
+
+        for (RBRecipeGroup *group in self.recipeBook.recipeGroups) {
+            [items addObject:group];
+        }
+
+        _groups = [items copy];
+    }
+
+    return _groups;
+}
+
+- (NSArray<RBRecipe *> *)ungroupedRecipes
+{
+    if (_ungroupedRecipes) {
+        return _ungroupedRecipes;
+    }
+
+    @synchronized(self)
+    {
+        NSMutableArray *items = [NSMutableArray array];
+
+        for (RBRecipe *recipe in self.recipeBook.recipes) {
+            if (!recipe.recipeGroup) {
+                [items addObject:recipe];
+            }
+        }
+
+        _ungroupedRecipes = [items copy];
+    }
+
+    return _ungroupedRecipes;
+}
+
+- (NSArray<RBRecipe *> *)allRecipes
+{
+    if (_allRecipes) {
+        return _allRecipes;
+    }
+
+    @synchronized(self)
+    {
+        NSMutableArray<RBRecipe *> *recipes;
+        NSSortDescriptor *sortDescriptor =
+              [NSSortDescriptor sortDescriptorWithKey:@"createdAt" ascending:YES];
+
+        [recipes addObjectsFromArray:[[self.recipeBook.recipes array]
+                                           sortedArrayUsingDescriptors:@[ sortDescriptor ]]];
+
+        _allRecipes = [recipes copy];
+    }
+
+    return _allRecipes;
 }
 
 #pragma mark - Core Data stack
@@ -177,102 +293,6 @@
     if ([[self managedObjectContext] hasChanges] && ![[self managedObjectContext] save:&error]) {
         [[NSApplication sharedApplication] presentError:error];
     }
-}
-
-#pragma mark - Properties
-@synthesize favorites = _favorites;
-@synthesize groups = _groups;
-@synthesize ungroupedRecipes = _ungroupedRecipes;
-@synthesize recipeBook = _recipeBook;
-
-- (RBRecipeBook *)recipeBook
-{
-    if (_recipeBook) {
-        return _recipeBook;
-    }
-
-    // Create or Load the Recipe Book Entity
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"RecipeBook"];
-    NSError *error;
-
-    _recipeBook =
-          [[self.managedObjectContext executeFetchRequest:fetchRequest error:&error] lastObject];
-
-    if (error) {
-        DDLogError(@"Failed to fetch the recipe book: %@\n%@", error.localizedDescription,
-                   error.userInfo);
-    }
-
-    if (!_recipeBook) {
-        // The book doesn't exist, so we have to create it
-        _recipeBook =
-              [NSEntityDescription insertNewObjectForEntityForName:@"RecipeBook"
-                                            inManagedObjectContext:self.managedObjectContext];
-    }
-
-    return _recipeBook;
-}
-
-- (NSArray<RBFavorite *> *)favorites
-{
-    if (_favorites) {
-        return _favorites;
-    }
-
-    @synchronized(self)
-    {
-        NSMutableArray<RBFavorite *> *items = [NSMutableArray array];
-
-        for (RBFavorite *favorite in self.recipeBook.favorites) {
-            [items addObject:favorite];
-        }
-
-        _favorites = [items copy];
-    }
-
-    return _favorites;
-}
-
-- (NSArray<RBRecipeGroup *> *)groups
-{
-    if (_groups) {
-        return _groups;
-    }
-
-    @synchronized(self)
-    {
-        NSMutableArray *items = [NSMutableArray array];
-
-        for (RBRecipeGroup *group in self.recipeBook.recipeGroups) {
-            [items addObject:group];
-        }
-
-        _groups = [items copy];
-    }
-
-    return _groups;
-}
-
-- (NSArray<RBRecipe *> *)ungroupedRecipes
-{
-    if (_ungroupedRecipes) {
-        return _ungroupedRecipes;
-    }
-
-    @synchronized(self)
-    {
-        NSMutableArray *items = [NSMutableArray array];
-
-        for (RBRecipe *recipe in self.recipeBook.recipes) {
-            if (!recipe.recipeGroup) {
-                [items addObject:recipe];
-            }
-        }
-
-        _ungroupedRecipes = [items copy];
-    }
-
-    return _ungroupedRecipes;
 }
 
 @end

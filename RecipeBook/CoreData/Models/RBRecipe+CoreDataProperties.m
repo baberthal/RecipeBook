@@ -15,9 +15,11 @@
 
 @dynamic recipeDescription;
 @dynamic stars;
+@dynamic createdAt;
+@dynamic updatedAt;
 @dynamic ingredientAmounts;
+@dynamic recipeBook;
 @dynamic recipeGroup;
 @dynamic steps;
-@dynamic recipeBook;
 
 @end

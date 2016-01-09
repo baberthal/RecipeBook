@@ -15,12 +15,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RBRecipe (CoreDataProperties)
 
-@property(nullable, nonatomic, retain) NSString *recipeDescription;
-@property(nullable, nonatomic, retain) NSNumber *stars;
-@property(nullable, nonatomic, retain) NSSet<RBIngredientAmount *> *ingredientAmounts;
-@property(nullable, nonatomic, retain) RBRecipeGroup *recipeGroup;
-@property(nullable, nonatomic, retain) NSOrderedSet<RBRecipeStep *> *steps;
-@property(nullable, nonatomic, retain) RBRecipeBook *recipeBook;
+@property (nullable, nonatomic, retain) NSString *recipeDescription;
+@property (nonatomic) int16_t stars;
+@property (nonatomic) NSTimeInterval createdAt;
+@property (nonatomic) NSTimeInterval updatedAt;
+@property (nullable, nonatomic, retain) NSSet<RBIngredientAmount *> *ingredientAmounts;
+@property (nullable, nonatomic, retain) RBRecipeBook *recipeBook;
+@property (nullable, nonatomic, retain) RBRecipeGroup *recipeGroup;
+@property (nullable, nonatomic, retain) NSOrderedSet<RBRecipeStep *> *steps;
 
 @end
 

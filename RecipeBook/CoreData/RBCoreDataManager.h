@@ -27,5 +27,6 @@
 @property(readonly) IBOutlet NSArray<RBFavorite *> *favorites;
 @property(readonly) NSArray<RBRecipeGroup *> *groups;
 @property(readonly) NSArray<RBRecipe *> *ungroupedRecipes;
+@property(readonly) NSArray<RBRecipe *> *allRecipes;
 
 @end
