@@ -958,11 +958,6 @@
             </items>
             <point key="canvasLocation" x="1158" y="500.5"/>
         </menu>
-        <customView id="3RF-gX-vAZ">
-            <rect key="frame" x="0.0" y="0.0" width="163" height="162"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <point key="canvasLocation" x="103.5" y="730"/>
-        </customView>
     </objects>
     <resources>
         <image name="JMLToolbarPrint" width="18" height="18"/>
