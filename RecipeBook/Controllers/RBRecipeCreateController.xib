@@ -3,6 +3,8 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
@@ -14,12 +16,9 @@
                 <outlet property="recipeDescriptionField" destination="tQB-5c-4Sf" id="6EB-ha-9Os"/>
                 <outlet property="recipeNameField" destination="hqV-ax-1oY" id="xkB-PF-BXn"/>
                 <outlet property="recipeRatingIndicator" destination="FDb-2m-zBW" id="bj5-dt-Foj"/>
-                <outlet property="recipeStepTableCtrl" destination="4pd-nv-b5e" id="BLl-p8-d2g"/>
-                <outlet property="recipeStepsArrayCtrl" destination="z94-nv-5zm" id="K83-0e-Kk1"/>
+                <outlet property="recipeStepCreateController" destination="E87-Sd-hGi" id="Jda-09-Laq"/>
                 <outlet property="recipeStepsBox" destination="Qb1-fp-D4Z" id="Fjh-Q0-FkL"/>
                 <outlet property="saveButton" destination="4ct-P6-aAS" id="cLR-2i-HAt"/>
-                <outlet property="stepTableController" destination="4pd-nv-b5e" id="xMY-M9-7br"/>
-                <outlet property="stepTableView" destination="aRI-Jo-KXu" id="m8Q-lg-Tje"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -69,6 +68,9 @@ Gw
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <outlet property="nextKeyView" destination="tQB-5c-4Sf" id="xtp-XZ-YNU"/>
+                    </connections>
                 </textField>
                 <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="N0O-FF-9yS">
                     <rect key="frame" x="26" y="526" width="474" height="5"/>
@@ -106,14 +108,14 @@ Gw
                         <rect key="frame" x="1" y="1" width="458" height="259"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="29" horizontalPageScroll="10" verticalLineScroll="29" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PPw-fZ-3q0">
+                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="28" horizontalPageScroll="10" verticalLineScroll="28" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PPw-fZ-3q0">
                                 <rect key="frame" x="2" y="23" width="454" height="236"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="i12-Sp-XKi">
-                                    <rect key="frame" x="0.0" y="0.0" width="454" height="236"/>
+                                    <rect key="frame" x="0.5" y="0.0" width="454" height="236"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="27" id="aRI-Jo-KXu">
-                                            <rect key="frame" x="0.0" y="0.0" width="454" height="29"/>
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="26" rowSizeStyle="automatic" viewBased="YES" id="aRI-Jo-KXu">
+                                            <rect key="frame" x="0.0" y="0.0" width="454" height="0.0"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -131,14 +133,60 @@ Gw
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                                    <connections>
-                                                        <binding destination="z94-nv-5zm" name="value" keyPath="arrangedObjects.stepText" id="sPO-EJ-oj2"/>
-                                                    </connections>
+                                                    <prototypeCellViews>
+                                                        <tableCellView identifier="StepView" id="9h6-0G-wGv" customClass="RBRecipeStepTableCellView">
+                                                            <rect key="frame" x="1" y="1" width="451" height="26"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cDn-LP-Xay">
+                                                                    <rect key="frame" x="4" y="5" width="37" height="17"/>
+                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="mdt-cM-Im1">
+                                                                        <font key="font" metaFont="system"/>
+                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                </textField>
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="pcC-2e-CVl">
+                                                                    <rect key="frame" x="47" y="2" width="374" height="22"/>
+                                                                    <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="FeW-2Q-OnJ">
+                                                                        <font key="font" metaFont="system"/>
+                                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                </textField>
+                                                                <button translatesAutoresizingMaskIntoConstraints="NO" id="tfj-Op-6SA">
+                                                                    <rect key="frame" x="431" y="5" width="16" height="16"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="16" id="4ng-u0-NOW"/>
+                                                                        <constraint firstAttribute="height" constant="16" id="55N-Y6-6IM"/>
+                                                                    </constraints>
+                                                                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSActionTemplate" imagePosition="overlaps" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Abk-1d-lAS">
+                                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                        <font key="font" metaFont="system"/>
+                                                                    </buttonCell>
+                                                                </button>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="cDn-LP-Xay" firstAttribute="centerY" secondItem="9h6-0G-wGv" secondAttribute="centerY" id="0VL-z5-Rnx"/>
+                                                                <constraint firstItem="pcC-2e-CVl" firstAttribute="leading" secondItem="cDn-LP-Xay" secondAttribute="trailing" constant="8" id="6k2-ZK-zBf"/>
+                                                                <constraint firstItem="cDn-LP-Xay" firstAttribute="leading" secondItem="9h6-0G-wGv" secondAttribute="leading" constant="6" id="H8Z-dE-1rY"/>
+                                                                <constraint firstItem="tfj-Op-6SA" firstAttribute="centerY" secondItem="cDn-LP-Xay" secondAttribute="centerY" id="Ke5-Go-bEw"/>
+                                                                <constraint firstItem="pcC-2e-CVl" firstAttribute="baseline" secondItem="cDn-LP-Xay" secondAttribute="firstBaseline" id="bwX-w1-tRP"/>
+                                                                <constraint firstItem="tfj-Op-6SA" firstAttribute="leading" secondItem="pcC-2e-CVl" secondAttribute="trailing" constant="10" id="ncf-nx-acL"/>
+                                                                <constraint firstAttribute="trailing" secondItem="tfj-Op-6SA" secondAttribute="trailing" constant="4" id="wYb-D6-kHB"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="stepActionButton" destination="tfj-Op-6SA" id="ueV-YB-IxJ"/>
+                                                                <outlet property="stepNumberField" destination="cDn-LP-Xay" id="dpt-sN-TRU"/>
+                                                                <outlet property="textField" destination="pcC-2e-CVl" id="Z1D-aK-EuA"/>
+                                                            </connections>
+                                                        </tableCellView>
+                                                    </prototypeCellViews>
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
-                                                <outlet property="dataSource" destination="-2" id="QZ6-pP-8of"/>
-                                                <outlet property="delegate" destination="-2" id="sXV-Oq-cwc"/>
+                                                <outlet property="dataSource" destination="E87-Sd-hGi" id="m8m-ix-x5O"/>
+                                                <outlet property="delegate" destination="E87-Sd-hGi" id="aEl-Cy-nX2"/>
                                             </connections>
                                         </tableView>
                                     </subviews>
@@ -164,8 +212,7 @@ Gw
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="add:" target="z94-nv-5zm" id="hHd-2j-fWv"/>
-                                    <binding destination="z94-nv-5zm" name="enabled" keyPath="canAdd" id="blY-S1-4iY"/>
+                                    <action selector="btnInsertNewStep:" target="E87-Sd-hGi" id="rgz-VK-R7e"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3yW-rb-Mfy">
@@ -175,8 +222,7 @@ Gw
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="remove:" target="z94-nv-5zm" id="9h9-MZ-YPs"/>
-                                    <binding destination="z94-nv-5zm" name="enabled" keyPath="canRemove" id="sTU-ev-G51"/>
+                                    <action selector="btnRemoveSelectedStep:" target="E87-Sd-hGi" id="j79-83-0Pz"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -231,18 +277,14 @@ Gw
             </constraints>
             <point key="canvasLocation" x="462" y="464"/>
         </customView>
-        <customObject id="4pd-nv-b5e" customClass="RBRecipeStepTableController">
+        <customObject id="E87-Sd-hGi" customClass="RBRecipeStepCreateController">
             <connections>
-                <outlet property="delegate" destination="-2" id="XBy-pP-JjD"/>
+                <outlet property="tableView" destination="aRI-Jo-KXu" id="XlP-EW-wNA"/>
             </connections>
         </customObject>
-        <arrayController mode="entity" entityName="RecipeStep" automaticallyPreparesContent="YES" id="z94-nv-5zm" userLabel="RecipeSteps">
-            <connections>
-                <binding destination="-2" name="managedObjectContext" keyPath="coreDataManager.managedObjectContext" id="5j7-zM-2aq"/>
-            </connections>
-        </arrayController>
     </objects>
     <resources>
+        <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
         <image name="ic_star" width="24" height="24"/>

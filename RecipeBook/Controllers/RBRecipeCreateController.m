@@ -11,6 +11,7 @@
 #import "RBCoreDataManager.h"
 #import "RBRecipeCreateController.h"
 #import "RBRecipeStep.h"
+#import "RBRecipeStepCreateController.h"
 #import "RBTableLineNumberRulerView.h"
 
 @interface RBRecipeCreateController ()
@@ -28,17 +29,8 @@
           insertNewObjectForEntityForName:@"Recipe"
                    inManagedObjectContext:self.coreDataManager.managedObjectContext];
 
-    NSScrollView *scrollView = [self.stepTableView enclosingScrollView];
-    RBTableLineNumberRulerView *lineNrView =
-          [[RBTableLineNumberRulerView alloc] initWithTableView:self.stepTableView
-                                           usingArrayController:self.recipeStepsArrayCtrl];
-
-    //    NSColor *bg = [self.recipeStepsBox fillColor];
-    //    [lineNrView setBackgroundColor:bg];
-
-    [scrollView setVerticalRulerView:lineNrView];
-    [scrollView setHasVerticalRuler:YES];
-    [scrollView setRulersVisible:YES];
+    [self.recipeStepCreateController setCurrentRecipe:newRecipe];
+    DDLogDebug(@"%s", __PRETTY_FUNCTION__);
 }
 
 - (RBCoreDataManager *)coreDataManager
@@ -66,7 +58,7 @@
 {
     newRecipe.name = self.recipeNameField.stringValue;
     newRecipe.recipeDescription = self.recipeDescriptionField.stringValue;
-    newRecipe.stars = @(self.recipeRatingIndicator.integerValue);
+    newRecipe.stars = self.recipeRatingIndicator.integerValue;
 
     NSArray<RBRecipeStep *> *steps = self.recipeStepsArrayCtrl.arrangedObjects;
     NSMutableOrderedSet<RBRecipeStep *> *finalSteps;

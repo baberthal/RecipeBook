@@ -10,6 +10,7 @@
 
 @class RBCoreDataManager;
 @class RBRecipeStepTableController, RBIngredientTableController;
+@class RBRecipeStepCreateController;
 
 @protocol NewRecipeViewControllerDelegate <NSObject>
 
@@ -21,6 +22,7 @@
 
 @property(strong) IBOutlet NSArrayController *recipeStepsArrayCtrl;
 @property(readonly) RBCoreDataManager *coreDataManager;
+@property(strong) IBOutlet RBRecipeStepCreateController *recipeStepCreateController;
 
 @property(weak) IBOutlet NSButton *saveButton;
 @property(weak) IBOutlet NSButton *cancelButton;
