@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="RBWelcomeViewController">
+            <connections>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+                <outlet property="welcomeMessageField" destination="ulb-cE-ipj" id="afq-TQ-K6t"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="680" height="600"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0AE-A8-eof">
+                    <rect key="frame" x="190" y="518" width="300" height="34"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Welcome to Recipe Book" id="3mj-aT-Mi0">
+                        <font key="font" metaFont="systemThin" size="28"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ulb-cE-ipj">
+                    <rect key="frame" x="190" y="446" width="300" height="36"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="It doesn't look like you have any recipes!  Click the button below to add one." id="cGF-7R-5ng">
+                        <font key="font" metaFont="systemLight" size="14"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="q0i-ib-tWg">
+                    <rect key="frame" x="206" y="382" width="268" height="32"/>
+                    <buttonCell key="cell" type="push" title="Create a Recipe!" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8a5-lf-onM">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="btnCreateARecipe:" target="-2" id="KbY-iK-Gqj"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MtD-of-1Vh">
+                    <rect key="frame" x="289" y="286" width="102" height="18"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Other Options:" id="CYQ-JV-wFq">
+                        <font key="font" metaFont="systemLight" size="14"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="o2I-ct-aiL">
+                    <rect key="frame" x="20" y="350" width="640" height="5"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="ECG-Ph-VFZ"/>
+                    </constraints>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <font key="titleFont" metaFont="system"/>
+                </box>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="f4i-JP-z2h">
+                    <rect key="frame" x="199" y="235" width="137" height="32"/>
+                    <buttonCell key="cell" type="push" title="Search Online" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6Q6-Bq-wfM">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="btnSearchOnlineForRecipes:" target="-2" id="5Ab-cf-oXQ"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vB1-In-mr1">
+                    <rect key="frame" x="489" y="235" width="137" height="32"/>
+                    <buttonCell key="cell" type="push" title="Configure" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CHd-vn-yA7">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="btnConfigureRecipeBook:" target="-2" id="a3h-r3-Wla"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MPP-uO-FCC">
+                    <rect key="frame" x="344" y="235" width="137" height="32"/>
+                    <buttonCell key="cell" type="push" title="Import..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="17y-9O-9as">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="btnImportARecipe:" target="-2" id="g86-RA-3yh"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TRI-HX-1He">
+                    <rect key="frame" x="54" y="235" width="137" height="32"/>
+                    <buttonCell key="cell" type="push" title="Load From File" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cfI-vQ-QID">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="btnLoadRecipeBookFromFile:" target="-2" id="ma7-XP-uIy"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="q0i-ib-tWg" firstAttribute="top" secondItem="ulb-cE-ipj" secondAttribute="bottom" constant="36" id="0Fv-5P-BfX"/>
+                <constraint firstAttribute="trailing" secondItem="vB1-In-mr1" secondAttribute="trailing" constant="60" id="1z2-1r-uJJ"/>
+                <constraint firstItem="MtD-of-1Vh" firstAttribute="top" secondItem="o2I-ct-aiL" secondAttribute="bottom" constant="48" id="4FH-0S-bVT"/>
+                <constraint firstItem="ulb-cE-ipj" firstAttribute="top" secondItem="0AE-A8-eof" secondAttribute="bottom" constant="36" id="4Xw-Wj-Zz6"/>
+                <constraint firstItem="vB1-In-mr1" firstAttribute="baseline" secondItem="TRI-HX-1He" secondAttribute="baseline" id="4rd-iI-m1Q"/>
+                <constraint firstItem="MPP-uO-FCC" firstAttribute="width" secondItem="TRI-HX-1He" secondAttribute="width" id="8Wr-4I-4a4"/>
+                <constraint firstItem="q0i-ib-tWg" firstAttribute="trailing" secondItem="ulb-cE-ipj" secondAttribute="trailing" constant="-20" id="Bkc-MP-VWM"/>
+                <constraint firstItem="MtD-of-1Vh" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="EgH-kF-3gc"/>
+                <constraint firstItem="f4i-JP-z2h" firstAttribute="leading" secondItem="TRI-HX-1He" secondAttribute="trailing" constant="20" id="Q0v-j6-CCk"/>
+                <constraint firstItem="TRI-HX-1He" firstAttribute="top" secondItem="o2I-ct-aiL" secondAttribute="bottom" constant="89" id="Tye-NP-VGm"/>
+                <constraint firstItem="MPP-uO-FCC" firstAttribute="leading" secondItem="f4i-JP-z2h" secondAttribute="trailing" constant="20" id="VCw-VF-b7y"/>
+                <constraint firstAttribute="trailing" secondItem="o2I-ct-aiL" secondAttribute="trailing" constant="20" id="ZLi-ED-TL0"/>
+                <constraint firstItem="MPP-uO-FCC" firstAttribute="baseline" secondItem="TRI-HX-1He" secondAttribute="baseline" id="ZpU-l9-Qn9"/>
+                <constraint firstItem="ulb-cE-ipj" firstAttribute="leading" secondItem="0AE-A8-eof" secondAttribute="leading" id="c5a-nR-00m"/>
+                <constraint firstItem="o2I-ct-aiL" firstAttribute="top" secondItem="q0i-ib-tWg" secondAttribute="bottom" constant="36" id="e7T-bd-WYd"/>
+                <constraint firstItem="vB1-In-mr1" firstAttribute="leading" secondItem="MPP-uO-FCC" secondAttribute="trailing" constant="20" id="eDE-Oc-vJj"/>
+                <constraint firstItem="f4i-JP-z2h" firstAttribute="baseline" secondItem="TRI-HX-1He" secondAttribute="baseline" id="eED-34-gFe"/>
+                <constraint firstItem="q0i-ib-tWg" firstAttribute="leading" secondItem="ulb-cE-ipj" secondAttribute="leading" constant="20" id="gpC-gZ-TYw"/>
+                <constraint firstItem="0AE-A8-eof" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="48" id="hWG-hq-nP7"/>
+                <constraint firstItem="ulb-cE-ipj" firstAttribute="trailing" secondItem="0AE-A8-eof" secondAttribute="trailing" id="iJp-aK-XOz"/>
+                <constraint firstItem="TRI-HX-1He" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="60" id="lDk-p0-dQm"/>
+                <constraint firstItem="f4i-JP-z2h" firstAttribute="width" secondItem="TRI-HX-1He" secondAttribute="width" id="na8-jG-Ynz"/>
+                <constraint firstItem="o2I-ct-aiL" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="nz1-pj-fef"/>
+                <constraint firstItem="0AE-A8-eof" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="uoV-l4-0c5"/>
+                <constraint firstItem="vB1-In-mr1" firstAttribute="width" secondItem="TRI-HX-1He" secondAttribute="width" id="vzM-as-lKw"/>
+            </constraints>
+        </customView>
+    </objects>
+</document>
