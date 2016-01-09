@@ -153,7 +153,7 @@
 
     @synchronized(self)
     {
-        NSMutableArray<RBRecipe *> *recipes;
+        NSMutableArray<RBRecipe *> *recipes = [NSMutableArray array];
         NSSortDescriptor *sortDescriptor =
               [NSSortDescriptor sortDescriptorWithKey:@"createdAt" ascending:YES];
 
