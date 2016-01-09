@@ -23,7 +23,8 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    [DDLog addLogger:MY_LOGGER];
+    [DDLog addLogger:[DDASLLogger sharedInstance]];
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification

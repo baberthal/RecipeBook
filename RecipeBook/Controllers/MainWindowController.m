@@ -14,13 +14,9 @@
 
 @implementation MainWindowController
 
-- (void)windowDidLoad
-{
-    [super windowDidLoad];
-}
-
 - (void)awakeFromNib
 {
-    NSLog(@"Window loaded.");
+    NSLog(@"%s", __PRETTY_FUNCTION__);
 }
+
 @end
