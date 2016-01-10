@@ -17,7 +17,7 @@
 
 @end
 
-@interface RBRecipeStepCreateController : NSObject <NSTableViewDataSource, NSTableViewDelegate>
+@interface RBRecipeStepController : NSObject <NSTableViewDataSource, NSTableViewDelegate>
 
 @property(readonly) RBCoreDataManager *coreDataManager;
 @property RBRecipe *currentRecipe;

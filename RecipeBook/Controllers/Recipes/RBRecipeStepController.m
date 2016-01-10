@@ -6,14 +6,14 @@
 //  Copyright © 2016 Morgan Lieberthal. All rights reserved.
 //
 
-#import "RBRecipeStepCreateController.h"
-#import "RBCoreDataManager.h"
 #import "RBRecipe.h"
+#import "RBCoreDataManager.h"
 #import "RBRecipeStep.h"
+#import "RBRecipeStepController.h"
 #import "RBRecipeStepTableCellView.h"
 #import "RBRecipeStepTableRowView.h"
 
-@implementation RBRecipeStepCreateController
+@implementation RBRecipeStepController
 
 #pragma mark - Properties
 

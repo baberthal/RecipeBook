@@ -8,39 +8,25 @@
 
 #import "RBRecipe.h"
 #import "RBCoreDataManager.h"
-#import "RBRecipeCreateController.h"
+#import "RBRecipeController.h"
 #import "RBRecipeStep.h"
-#import "RBRecipeStepCreateController.h"
+#import "RBRecipeStepController.h"
 #import "RBTableLineNumberRulerView.h"
 
-@interface RBRecipeCreateController ()
-
-@property(nonatomic, assign, getter=isEditing) BOOL editing;
+@interface RBRecipeController ()
 
 @end
 
-@implementation RBRecipeCreateController
+@implementation RBRecipeController
 
 #pragma mark - Properties
 
 @synthesize currentRecipe = _currentRecipe;
-@synthesize newRecipe = _hasNewRecipe;
-@synthesize editing = _isEditing;
+@synthesize editing = _editing;
 
 - (RBCoreDataManager *)coreDataManager
 {
     return [RBCoreDataManager sharedManager];
-}
-
-- (BOOL)isEditing
-{
-    return _isEditing;
-}
-
-- (void)setEditing:(BOOL)editing
-{
-    [self internalSetEditing:editing];
-    _isEditing = editing;
 }
 
 - (void)internalSetEditing:(BOOL)flag
@@ -52,24 +38,11 @@
     self.cancelButton.hidden = buttonsHidden;
     self.recipeNameField.bordered = textFieldsBorderedAndEditable;
     self.recipeNameField.editable = textFieldsBorderedAndEditable;
+    self.recipeNameField.enabled = textFieldsBorderedAndEditable;
     self.recipeDescriptionField.bordered = textFieldsBorderedAndEditable;
     self.recipeDescriptionField.editable = textFieldsBorderedAndEditable;
     self.addStepButton.enabled = textFieldsBorderedAndEditable;
     self.recipeRatingIndicator.enabled = textFieldsBorderedAndEditable;
-}
-
-- (BOOL)isNewRecipe
-{
-    return _hasNewRecipe;
-}
-
-- (void)setNewRecipe:(BOOL)newRecipe
-{
-    if (newRecipe) {
-        [self setEditing:YES];
-    }
-
-    _hasNewRecipe = newRecipe;
 }
 
 #pragma mark - IBActions
@@ -106,25 +79,42 @@
 }
 
 #pragma mark - View Lifecycle Events
+- (void)awakeFromNib
+{
+    [self addObserver:self forKeyPath:@keypath(self, currentRecipe) options:0 context:nil];
+    [self addObserver:self forKeyPath:@keypath(self, isEditing) options:0 context:nil];
+    DDLogFunction();
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self addObserver:self forKeyPath:keypath(currentRecipe) options:0 context:nil];
-    [self addObserver:self forKeyPath:keypath(isEditing) options:0 context:nil];
-    [self addObserver:self forKeyPath:keypath(isNewRecipe) options:0 context:nil];
+    DDLogFunction();
 }
 
 - (void)dealloc
 {
-    [self removeObserver:self forKeyPath:keypath(currentRecipe)];
-    [self removeObserver:self forKeyPath:keypath(isEditing)];
-    [self removeObserver:self forKeyPath:keypath(isNewRecipe)];
+    [self removeObserver:self forKeyPath:@keypath(self, currentRecipe)];
+    [self removeObserver:self forKeyPath:@keypath(self, isEditing)];
 }
 
 - (void)viewDidAppear
 {
-    [self.recipeNameField becomeFirstResponder];
+    if (self.editing) {
+        [self.recipeNameField becomeFirstResponder];
+    }
+    else {
+        [self.recipeNameField setEditable:NO];
+        [self.recipeNameField setBordered:NO];
+        [self.recipeNameField setDrawsBackground:NO];
+
+        [self.recipeDescriptionField setEditable:NO];
+        [self.recipeDescriptionField setBordered:NO];
+        [self.recipeDescriptionField setDrawsBackground:NO];
+
+        [self.saveButton setHidden:YES];
+        [self.cancelButton setHidden:YES];
+    }
 }
 
 - (void)dismissSelf
@@ -144,12 +134,12 @@
 {
     DDLogDebug(@"%@ changed.", keyPath);
 
-    if ([keyPath isEqualToString:keypath(currentRecipe)]) {
+    if ([keyPath isEqualToString:@keypath(self, currentRecipe)]) {
         [self.recipeStepCreateController setCurrentRecipe:self.currentRecipe];
     }
-    else if ([keyPath isEqualToString:keypath(isEditing)]) {
-    }
-    else if ([keyPath isEqualToString:keypath(isNewRecipe)]) {
+    else if ([keyPath isEqualToString:@keypath(self, isEditing)]) {
+        [self internalSetEditing:NO];
+        DDLogFunction();
     }
 }
 

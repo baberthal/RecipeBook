@@ -7,15 +7,15 @@
 //
 
 @class RBCoreDataManager;
-@class RBRecipeStepCreateController;
+@class RBRecipeStepController;
 @class RBWelcomeViewController;
 @class RBRecipe;
 
-@interface RBRecipeCreateController : NSViewController <NSTableViewDataSource, NSTableViewDelegate>
+@interface RBRecipeController : NSViewController <NSTableViewDataSource, NSTableViewDelegate>
 
 @property(readonly) RBCoreDataManager *coreDataManager;
 
-@property(strong) IBOutlet RBRecipeStepCreateController *recipeStepCreateController;
+@property(strong) IBOutlet RBRecipeStepController *recipeStepCreateController;
 
 @property(weak) IBOutlet NSButton *saveButton;
 @property(weak) IBOutlet NSButton *cancelButton;
@@ -28,6 +28,8 @@
 @property(weak) IBOutlet NSBox *recipeStepsBox;
 
 @property(strong) RBRecipe *currentRecipe;
+
 @property(nonatomic, assign, getter=isNewRecipe) BOOL newRecipe;
+@property(nonatomic, assign, getter=isEditing) BOOL editing;
 
 @end
