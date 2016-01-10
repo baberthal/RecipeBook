@@ -30,21 +30,19 @@
 		90C1BD231C3E118A00DA5DA5 /* RBIngredientAmount.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C1BD1D1C3E118A00DA5DA5 /* RBIngredientAmount.m */; };
 		90C1BD241C3E118A00DA5DA5 /* RBIngredient+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C1BD1F1C3E118A00DA5DA5 /* RBIngredient+CoreDataProperties.m */; };
 		90C1BD251C3E118A00DA5DA5 /* RBIngredient.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C1BD211C3E118A00DA5DA5 /* RBIngredient.m */; };
-		90CB17811C408C9D00463C9C /* RBRecipeCreateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CB177D1C408C9D00463C9C /* RBRecipeCreateController.m */; };
-		90CB17821C408C9D00463C9C /* RBRecipeCreateController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90CB177E1C408C9D00463C9C /* RBRecipeCreateController.xib */; };
-		90CB17831C408C9D00463C9C /* RBRecipeStepCreateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CB17801C408C9D00463C9C /* RBRecipeStepCreateController.m */; };
+		90CB17811C408C9D00463C9C /* RBRecipeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CB177D1C408C9D00463C9C /* RBRecipeController.m */; };
+		90CB17821C408C9D00463C9C /* RBRecipeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90CB177E1C408C9D00463C9C /* RBRecipeController.xib */; };
+		90CB17831C408C9D00463C9C /* RBRecipeStepController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CB17801C408C9D00463C9C /* RBRecipeStepController.m */; };
 		90CB17A31C408D5A00463C9C /* RBTableLineNumberRulerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CB179B1C408D5A00463C9C /* RBTableLineNumberRulerView.m */; };
 		90CB17A41C408D5A00463C9C /* RBRecipeStepTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CB179F1C408D5A00463C9C /* RBRecipeStepTableCellView.m */; };
 		90CB17A51C408D5A00463C9C /* JMLPopupButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CB17A21C408D5A00463C9C /* JMLPopupButton.m */; };
 		90CB17A91C408DE800463C9C /* RBWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CB17A71C408DE800463C9C /* RBWelcomeViewController.m */; };
 		90CB17AA1C408DE800463C9C /* RBWelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90CB17A81C408DE800463C9C /* RBWelcomeViewController.xib */; };
 		90CB17AD1C40A82700463C9C /* RBRecipeStepTableRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CB17AC1C40A82700463C9C /* RBRecipeStepTableRowView.m */; };
-		90CB17B31C40D01100463C9C /* RBRecipeShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CB17B11C40D01100463C9C /* RBRecipeShowViewController.m */; };
-		90CB17B41C40D01100463C9C /* RBRecipeShowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90CB17B21C40D01100463C9C /* RBRecipeShowViewController.xib */; };
 		90F768631C3DF30B0092347B /* RecipeBook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 90F768611C3DF30B0092347B /* RecipeBook.xcdatamodeld */; };
 		90F768661C3DF39F0092347B /* RBCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 90F768651C3DF39F0092347B /* RBCoreDataManager.m */; };
 		90F7686D1C3DF6910092347B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 90F7686B1C3DF6910092347B /* main.m */; };
-		90F768701C3DF7500092347B /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90F7686F1C3DF7500092347B /* MainWindowController.m */; };
+		90F768701C3DF7500092347B /* RBToolbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90F7686F1C3DF7500092347B /* RBToolbarController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,11 +103,11 @@
 		90C1BD1F1C3E118A00DA5DA5 /* RBIngredient+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RBIngredient+CoreDataProperties.m"; sourceTree = "<group>"; };
 		90C1BD201C3E118A00DA5DA5 /* RBIngredient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBIngredient.h; sourceTree = "<group>"; };
 		90C1BD211C3E118A00DA5DA5 /* RBIngredient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBIngredient.m; sourceTree = "<group>"; };
-		90CB177C1C408C9D00463C9C /* RBRecipeCreateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBRecipeCreateController.h; sourceTree = "<group>"; };
-		90CB177D1C408C9D00463C9C /* RBRecipeCreateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBRecipeCreateController.m; sourceTree = "<group>"; };
-		90CB177E1C408C9D00463C9C /* RBRecipeCreateController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RBRecipeCreateController.xib; sourceTree = "<group>"; };
-		90CB177F1C408C9D00463C9C /* RBRecipeStepCreateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBRecipeStepCreateController.h; sourceTree = "<group>"; };
-		90CB17801C408C9D00463C9C /* RBRecipeStepCreateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBRecipeStepCreateController.m; sourceTree = "<group>"; };
+		90CB177C1C408C9D00463C9C /* RBRecipeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBRecipeController.h; sourceTree = "<group>"; };
+		90CB177D1C408C9D00463C9C /* RBRecipeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBRecipeController.m; sourceTree = "<group>"; };
+		90CB177E1C408C9D00463C9C /* RBRecipeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RBRecipeController.xib; sourceTree = "<group>"; };
+		90CB177F1C408C9D00463C9C /* RBRecipeStepController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBRecipeStepController.h; sourceTree = "<group>"; };
+		90CB17801C408C9D00463C9C /* RBRecipeStepController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBRecipeStepController.m; sourceTree = "<group>"; };
 		90CB179A1C408D5A00463C9C /* RBTableLineNumberRulerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBTableLineNumberRulerView.h; sourceTree = "<group>"; };
 		90CB179B1C408D5A00463C9C /* RBTableLineNumberRulerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBTableLineNumberRulerView.m; sourceTree = "<group>"; };
 		90CB179E1C408D5A00463C9C /* RBRecipeStepTableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBRecipeStepTableCellView.h; sourceTree = "<group>"; };
@@ -121,16 +119,15 @@
 		90CB17A81C408DE800463C9C /* RBWelcomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RBWelcomeViewController.xib; sourceTree = "<group>"; };
 		90CB17AB1C40A82700463C9C /* RBRecipeStepTableRowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBRecipeStepTableRowView.h; sourceTree = "<group>"; };
 		90CB17AC1C40A82700463C9C /* RBRecipeStepTableRowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBRecipeStepTableRowView.m; sourceTree = "<group>"; };
-		90CB17B01C40D01100463C9C /* RBRecipeShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBRecipeShowViewController.h; sourceTree = "<group>"; };
-		90CB17B11C40D01100463C9C /* RBRecipeShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBRecipeShowViewController.m; sourceTree = "<group>"; };
-		90CB17B21C40D01100463C9C /* RBRecipeShowViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RBRecipeShowViewController.xib; sourceTree = "<group>"; };
+		90CB17B61C41D68100463C9C /* metamacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = metamacros.h; sourceTree = "<group>"; };
+		90CB17B71C41D68100463C9C /* EXTKeyPathCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXTKeyPathCoding.h; sourceTree = "<group>"; };
 		90F768621C3DF30B0092347B /* RecipeBook.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RecipeBook.xcdatamodel; sourceTree = "<group>"; };
 		90F768641C3DF39F0092347B /* RBCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBCoreDataManager.h; sourceTree = "<group>"; };
 		90F768651C3DF39F0092347B /* RBCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBCoreDataManager.m; sourceTree = "<group>"; };
 		90F7686A1C3DF6910092347B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90F7686B1C3DF6910092347B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		90F7686E1C3DF7500092347B /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
-		90F7686F1C3DF7500092347B /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
+		90F7686E1C3DF7500092347B /* RBToolbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBToolbarController.h; sourceTree = "<group>"; };
+		90F7686F1C3DF7500092347B /* RBToolbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBToolbarController.m; sourceTree = "<group>"; };
 		90F768711C3DF9210092347B /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		98A18BEE2BF7F954D37884CB /* libPods-RecipeBookTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RecipeBookTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B604331DA6373CDB210CDFD9 /* Pods-RecipeBook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeBook.release.xcconfig"; path = "Pods/Target Support Files/Pods-RecipeBook/Pods-RecipeBook.release.xcconfig"; sourceTree = "<group>"; };
@@ -264,8 +261,11 @@
 		90CB177B1C408C9D00463C9C /* Recipes */ = {
 			isa = PBXGroup;
 			children = (
-				90CB17AF1C40CFF600463C9C /* Show */,
-				90CB17AE1C40CFF000463C9C /* Create */,
+				90CB177C1C408C9D00463C9C /* RBRecipeController.h */,
+				90CB177D1C408C9D00463C9C /* RBRecipeController.m */,
+				90CB177E1C408C9D00463C9C /* RBRecipeController.xib */,
+				90CB177F1C408C9D00463C9C /* RBRecipeStepController.h */,
+				90CB17801C408C9D00463C9C /* RBRecipeStepController.m */,
 			);
 			path = Recipes;
 			sourceTree = "<group>";
@@ -309,28 +309,6 @@
 			path = Buttons;
 			sourceTree = "<group>";
 		};
-		90CB17AE1C40CFF000463C9C /* Create */ = {
-			isa = PBXGroup;
-			children = (
-				90CB177C1C408C9D00463C9C /* RBRecipeCreateController.h */,
-				90CB177D1C408C9D00463C9C /* RBRecipeCreateController.m */,
-				90CB177E1C408C9D00463C9C /* RBRecipeCreateController.xib */,
-				90CB177F1C408C9D00463C9C /* RBRecipeStepCreateController.h */,
-				90CB17801C408C9D00463C9C /* RBRecipeStepCreateController.m */,
-			);
-			name = Create;
-			sourceTree = "<group>";
-		};
-		90CB17AF1C40CFF600463C9C /* Show */ = {
-			isa = PBXGroup;
-			children = (
-				90CB17B01C40D01100463C9C /* RBRecipeShowViewController.h */,
-				90CB17B11C40D01100463C9C /* RBRecipeShowViewController.m */,
-				90CB17B21C40D01100463C9C /* RBRecipeShowViewController.xib */,
-			);
-			name = Show;
-			sourceTree = "<group>";
-		};
 		90F768601C3DF30B0092347B /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -347,8 +325,8 @@
 			children = (
 				90CB177A1C408C9D00463C9C /* Welcome View Controller */,
 				90CB177B1C408C9D00463C9C /* Recipes */,
-				90F7686E1C3DF7500092347B /* MainWindowController.h */,
-				90F7686F1C3DF7500092347B /* MainWindowController.m */,
+				90F7686E1C3DF7500092347B /* RBToolbarController.h */,
+				90F7686F1C3DF7500092347B /* RBToolbarController.m */,
 				90C1BCF11C3E0A5A00DA5DA5 /* MainViewController.h */,
 				90C1BCF21C3E0A5A00DA5DA5 /* MainViewController.m */,
 			);
@@ -368,6 +346,8 @@
 		90F768691C3DF6910092347B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				90CB17B61C41D68100463C9C /* metamacros.h */,
+				90CB17B71C41D68100463C9C /* EXTKeyPathCoding.h */,
 				90F7686A1C3DF6910092347B /* Info.plist */,
 				90F7686B1C3DF6910092347B /* main.m */,
 				90F768711C3DF9210092347B /* Prefix.pch */,
@@ -471,8 +451,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				90B330F31C3DF16400679BA3 /* Assets.xcassets in Resources */,
-				90CB17B41C40D01100463C9C /* RBRecipeShowViewController.xib in Resources */,
-				90CB17821C408C9D00463C9C /* RBRecipeCreateController.xib in Resources */,
+				90CB17821C408C9D00463C9C /* RBRecipeController.xib in Resources */,
 				90B330F61C3DF16400679BA3 /* MainMenu.xib in Resources */,
 				90CB17AA1C408DE800463C9C /* RBWelcomeViewController.xib in Resources */,
 			);
@@ -594,8 +573,8 @@
 				902F75111C405FCD00CE5029 /* RBRecipeBook.m in Sources */,
 				90C1BD181C3E116C00DA5DA5 /* RBRecipeStep+CoreDataProperties.m in Sources */,
 				90C1BD151C3E116C00DA5DA5 /* RBRecipe.m in Sources */,
-				90CB17831C408C9D00463C9C /* RBRecipeStepCreateController.m in Sources */,
-				90F768701C3DF7500092347B /* MainWindowController.m in Sources */,
+				90CB17831C408C9D00463C9C /* RBRecipeStepController.m in Sources */,
+				90F768701C3DF7500092347B /* RBToolbarController.m in Sources */,
 				90C1BD251C3E118A00DA5DA5 /* RBIngredient.m in Sources */,
 				90C1BCF31C3E0A5A00DA5DA5 /* MainViewController.m in Sources */,
 				90CB17A31C408D5A00463C9C /* RBTableLineNumberRulerView.m in Sources */,
@@ -610,9 +589,8 @@
 				90CB17A41C408D5A00463C9C /* RBRecipeStepTableCellView.m in Sources */,
 				90C1BD171C3E116C00DA5DA5 /* RBRecipeGroup.m in Sources */,
 				90C1BD241C3E118A00DA5DA5 /* RBIngredient+CoreDataProperties.m in Sources */,
-				90CB17811C408C9D00463C9C /* RBRecipeCreateController.m in Sources */,
+				90CB17811C408C9D00463C9C /* RBRecipeController.m in Sources */,
 				90F768631C3DF30B0092347B /* RecipeBook.xcdatamodeld in Sources */,
-				90CB17B31C40D01100463C9C /* RBRecipeShowViewController.m in Sources */,
 				90C1BD231C3E118A00DA5DA5 /* RBIngredientAmount.m in Sources */,
 				90C1BD141C3E116C00DA5DA5 /* RBRecipe+CoreDataProperties.m in Sources */,
 			);

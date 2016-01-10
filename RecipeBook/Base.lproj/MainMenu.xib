@@ -18,7 +18,7 @@
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
-        <customObject id="PZZ-c9-BzE" customClass="MainWindowController">
+        <customObject id="PZZ-c9-BzE" customClass="RBToolbarController">
             <connections>
                 <outlet property="window" destination="QvC-M9-y7g" id="BTz-Kw-pmq"/>
             </connections>
