@@ -19,12 +19,16 @@
 
 @implementation AppDelegate
 
++ (void)initialize
+{
+    [DDLog addLogger:[DDASLLogger sharedInstance]];
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+}
+
 #pragma mark - Application Lifecycle Events
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    [DDLog addLogger:[DDASLLogger sharedInstance]];
-    [DDLog addLogger:[DDTTYLogger sharedInstance]];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification
