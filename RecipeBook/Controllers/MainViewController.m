@@ -9,9 +9,8 @@
 #import "MainViewController.h"
 #import "RBCoreDataManager.h"
 #import "RBRecipe.h"
-#import "RBRecipeCreateController.h"
+#import "RBRecipeController.h"
 #import "RBRecipeGroup.h"
-#import "RBRecipeShowViewController.h"
 #import "RBWelcomeViewController.h"
 
 @interface MainViewController ()
@@ -32,6 +31,7 @@
 @synthesize sidebarItems = _sidebarItems;
 @synthesize topLevelItems = _topLevelItems;
 @synthesize sidebarDict = _sidebarDict;
+@synthesize recipeController = _recipeController;
 
 - (RBCoreDataManager *)coreDataManager
 {
@@ -142,6 +142,24 @@
     return _sidebarDict;
 }
 
+- (RBRecipeController *)recipeController
+{
+    if (_recipeController) {
+        return _recipeController;
+    }
+
+    _recipeController =
+          [[RBRecipeController alloc] initWithNibName:NSStringFromClass([RBRecipeController class])
+                                               bundle:nil];
+
+    return _recipeController;
+}
+
+- (void)setRecipeController:(RBRecipeController *)recipeController
+{
+    _recipeController = recipeController;
+}
+
 - (void)setNeedsResetHeaderItems
 {
     _topLevelItems = nil;
@@ -170,23 +188,19 @@
 
 - (void)addNewRecipe:(id)sender
 {
-    RBRecipeCreateController *newVC = [[RBRecipeCreateController alloc]
-          initWithNibName:NSStringFromClass([RBRecipeCreateController class])
-                   bundle:nil];
+    [self.recipeController
+          setCurrentRecipe:[NSEntityDescription
+                                 insertNewObjectForEntityForName:@"Recipe"
+                                          inManagedObjectContext:self.coreDataManager
+                                                                       .managedObjectContext]];
 
-    [newVC setCurrentRecipe:[NSEntityDescription
-                                  insertNewObjectForEntityForName:@"Recipe"
-                                           inManagedObjectContext:self.coreDataManager
-                                                                        .managedObjectContext]];
+    [self.recipeController setNewRecipe:YES];
 
-    [newVC setNewRecipe:YES];
+    if (![self.childViewControllers containsObject:self.recipeController]) {
+        [self addChildViewController:self.recipeController];
+    }
 
-    [self addChildViewController:newVC];
-
-    [NSAnimationContext beginGrouping];
-    [[NSAnimationContext currentContext] setDuration:2.0];
-    [[self.recipeContentView animator] addSubview:newVC.view];
-    [NSAnimationContext endGrouping];
+    [self transitionToNewRecipe];
 }
 
 #pragma mark - View Lifecycle Events
@@ -210,8 +224,6 @@
     else {
         [self showRecipe:self.coreDataManager.allRecipes.firstObject];
     }
-    NSLog(@"All Recipes: %@", self.coreDataManager.allRecipes);
-    NSLog(@"Ungrouped Recipes: %@", self.coreDataManager.ungroupedRecipes);
 }
 
 - (void)showWelcomeController:(id)sender
@@ -232,17 +244,21 @@
 
 - (void)showRecipe:(RBRecipe *)recipe
 {
-    RBRecipeShowViewController *showController = [[RBRecipeShowViewController alloc]
-          initWithNibName:NSStringFromClass([RBRecipeShowViewController class])
-                   bundle:nil];
-
-    [showController setCurrentRecipe:recipe];
-
-    [self addChildViewController:showController];
-
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:5.0];
-    [[self.recipeContentView animator] addSubview:showController.view];
+    [self.recipeController setCurrentRecipe:recipe];
+    [self.recipeController setEditing:NO];
+    if (![self.recipeContentView.subviews containsObject:self.recipeController.view]) {
+        [self.recipeContentView addSubview:self.recipeController.view];
+    }
+    [NSAnimationContext endGrouping];
+}
+
+- (void)transitionToNewRecipe
+{
+    [NSAnimationContext beginGrouping];
+    [[NSAnimationContext currentContext] setDuration:2.0];
+    [[self.recipeContentView animator] addSubview:self.recipeController.view];
     [NSAnimationContext endGrouping];
 }
 

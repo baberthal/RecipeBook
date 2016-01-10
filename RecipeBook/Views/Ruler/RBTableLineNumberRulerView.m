@@ -34,7 +34,7 @@
     _arrayController = arrayController;
 
     [arrayController addObserver:self
-                      forKeyPath:keypath(arrangedObjects)
+                      forKeyPath:@keypath(self, arrayController.arrangedObjects)
                          options:NSKeyValueObservingOptionNew
                          context:nil];
 
@@ -56,7 +56,8 @@
 
 - (void)finalize
 {
-    [self.arrayController removeObserver:self forKeyPath:keypath(arrangedObjects)];
+    [self.arrayController removeObserver:self
+                              forKeyPath:@keypath(self, arrayController.arrangedObjects)];
 }
 
 #pragma mark - KVO
@@ -66,7 +67,7 @@
                         change:(NSDictionary<NSString *, id> *)change
                        context:(void *)context
 {
-    if ([keyPath isEqualToString:keypath(arrangedObjects)]) {
+    if ([keyPath isEqualToString:@keypath(self, arrayController.arrangedObjects)]) {
         NSUInteger newRowCount = [self.arrayController.arrangedObjects count];
 
         if ((int)log10(self.rowCount) != (int)log10(newRowCount)) {

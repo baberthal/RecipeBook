@@ -6,7 +6,7 @@
 //  Copyright © 2016 Morgan Lieberthal. All rights reserved.
 //
 
-#import "RBRecipeCreateController.h"
+#import "RBRecipeController.h"
 #import "RBWelcomeViewController.h"
 #import <Cocoa/Cocoa.h>
 
@@ -24,6 +24,7 @@
 @property(weak) IBOutlet NSButton *addButton;
 @property(weak) IBOutlet NSMenu *addMenu;
 @property(weak) IBOutlet NSOutlineView *sidebarView;
+@property(strong) RBRecipeController *recipeController;
 
 - (IBAction)addNewGroup:(NSMenuItem *)sender;
 - (IBAction)addNewRecipe:(id)sender;
