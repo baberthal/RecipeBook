@@ -16,7 +16,9 @@
 #import <CocoaLumberjack/CocoaLumberjack.h>
 
 #define RBAbstractMethod() NSAssert(NO, @"This is an abstract method that must be overridden!")
-#define keypath(M) NSStringFromSelector(@selector(M))
+#define DDLogFunction() DDLogDebug(@"%s", __PRETTY_FUNCTION__)
+
+#import "EXTKeyPathCoding.h"
 
 #endif /* __OBJC__ */
 
