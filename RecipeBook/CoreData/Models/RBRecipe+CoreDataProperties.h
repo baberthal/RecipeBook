@@ -2,7 +2,7 @@
 //  RBRecipe+CoreDataProperties.h
 //  RecipeBook
 //
-//  Created by Morgan Lieberthal on 1/8/16.
+//  Created by Morgan Lieberthal on 1/9/16.
 //  Copyright © 2016 Morgan Lieberthal. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -15,14 +15,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RBRecipe (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSString *recipeDescription;
-@property (nonatomic) int16_t stars;
-@property (nonatomic) NSTimeInterval createdAt;
-@property (nonatomic) NSTimeInterval updatedAt;
-@property (nullable, nonatomic, retain) NSSet<RBIngredientAmount *> *ingredientAmounts;
-@property (nullable, nonatomic, retain) RBRecipeBook *recipeBook;
-@property (nullable, nonatomic, retain) RBRecipeGroup *recipeGroup;
-@property (nullable, nonatomic, retain) NSOrderedSet<RBRecipeStep *> *steps;
+@property(nullable, nonatomic, retain) NSDate *createdAt;
+@property(nullable, nonatomic, retain) NSString *recipeDescription;
+@property(nullable, nonatomic, retain) NSNumber *stars;
+@property(nullable, nonatomic, retain) NSDate *updatedAt;
+@property(nullable, nonatomic, retain) NSSet<RBIngredientAmount *> *ingredientAmounts;
+@property(nullable, nonatomic, retain) RBRecipeBook *recipeBook;
+@property(nullable, nonatomic, retain) RBRecipeGroup *recipeGroup;
+@property(nullable, nonatomic, retain) NSOrderedSet<RBRecipeStep *> *steps;
 
 @end
 
