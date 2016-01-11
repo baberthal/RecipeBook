@@ -16,7 +16,6 @@
 
 - (void)awakeFromNib
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
 @end
