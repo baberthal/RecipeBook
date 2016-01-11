@@ -10,8 +10,9 @@
 #import "RBCoreDataManager.h"
 #import "RBRecipeController.h"
 #import "RBRecipeStep.h"
-#import "RBRecipeStepController.h"
+#import "RBSaveOrEditButton.h"
 #import "RBTableLineNumberRulerView.h"
+#import "RBTextField.h"
 
 @interface RBRecipeController ()
 
@@ -19,53 +20,85 @@
 
 @implementation RBRecipeController
 
+#pragma mark - Initialization
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (!self) {
+        return nil;
+    }
+
+    [self registerAsObserverForSelf];
+    _editing = NO;
+    if (self.recipeNameField) {
+        NSLog(@"Recipe Name Field: %@", self.recipeNameField);
+    }
+
+    return self;
+}
+
+- (instancetype)init
+{
+    return [self initWithNibName:NSStringFromClass([self class]) bundle:nil];
+}
+
 #pragma mark - Properties
 
 @synthesize currentRecipe = _currentRecipe;
 @synthesize editing = _editing;
+@synthesize recipeStepController = _recipeStepController;
 
 - (RBCoreDataManager *)coreDataManager
 {
     return [RBCoreDataManager sharedManager];
 }
 
-- (void)internalSetEditing:(BOOL)flag
+- (void)internalSetEditing:(BOOL)wantsToEdit
 {
-    BOOL buttonsHidden = !flag;
-    BOOL textFieldsBorderedAndEditable = flag;
+    [self.saveButton setParentViewIsEditing:wantsToEdit];
 
-    self.saveButton.hidden = buttonsHidden;
-    self.cancelButton.hidden = buttonsHidden;
-    self.recipeNameField.bordered = textFieldsBorderedAndEditable;
-    self.recipeNameField.editable = textFieldsBorderedAndEditable;
-    self.recipeNameField.enabled = textFieldsBorderedAndEditable;
-    self.recipeDescriptionField.bordered = textFieldsBorderedAndEditable;
-    self.recipeDescriptionField.editable = textFieldsBorderedAndEditable;
-    self.addStepButton.enabled = textFieldsBorderedAndEditable;
-    self.recipeRatingIndicator.enabled = textFieldsBorderedAndEditable;
+    [self.cancelButton setHidden:!wantsToEdit];
+
+    [self.recipeNameField setShouldBeEditing:wantsToEdit];
+    [self.recipeNameField setNeedsDisplay];
+
+    [self.recipeDescriptionField setShouldBeEditing:wantsToEdit];
+    [self.recipeDescriptionField setNeedsDisplay];
+
+    self.recipeRatingIndicator.enabled = wantsToEdit;
+
+    if (wantsToEdit) {
+        [self.view.window makeFirstResponder:self.recipeNameField];
+    }
 }
 
 #pragma mark - IBActions
 
 - (IBAction)cancelButtonPressed:(id)sender
 {
-    [self dismissSelf];
+    [self setEditing:NO];
 }
 
 - (IBAction)saveButtonPressed:(id)sender
 {
     [self insertRecipe];
-    [self dismissSelf];
+    [self setEditing:NO];
+}
+
+- (void)editButtonPressed:(id)sender
+{
+    [self setEditing:YES];
 }
 
 - (void)insertRecipe
 {
     self.currentRecipe.name = self.recipeNameField.stringValue;
     self.currentRecipe.recipeDescription = self.recipeDescriptionField.stringValue;
-    self.currentRecipe.stars = self.recipeRatingIndicator.integerValue;
+    self.currentRecipe.stars = @(self.recipeRatingIndicator.integerValue);
     self.currentRecipe.recipeBook = self.coreDataManager.recipeBook;
 
-    NSOrderedSet<RBRecipeStep *> *steps = self.recipeStepCreateController.recipeSteps;
+    NSOrderedSet<RBRecipeStep *> *steps = self.recipeStepController.recipeSteps;
     [self.currentRecipe setSteps:steps];
     [self.coreDataManager saveAction:self];
 }
@@ -79,41 +112,36 @@
 }
 
 #pragma mark - View Lifecycle Events
-- (void)awakeFromNib
-{
-    [self addObserver:self forKeyPath:@keypath(self, currentRecipe) options:0 context:nil];
-    [self addObserver:self forKeyPath:@keypath(self, isEditing) options:0 context:nil];
-    DDLogFunction();
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    DDLogFunction();
+    [self.saveButton setTarget:self];
+    [self.saveButton setActionWhenEditing:@selector(saveButtonPressed:)];
+    [self.saveButton setActionWhenNotEditing:@selector(editButtonPressed:)];
+
+    [self.saveButton setKeyEquivWhenEditing:@"\r"];
+    [self.saveButton setKeyEquivWhenNotEditing:@"e"];
+    [self.saveButton setKeyEquivModifierMaskWhenNotEditing:NSCommandKeyMask];
+
+    [self.saveButton setParentViewIsEditing:self.editing];
 }
 
 - (void)dealloc
 {
     [self removeObserver:self forKeyPath:@keypath(self, currentRecipe)];
-    [self removeObserver:self forKeyPath:@keypath(self, isEditing)];
+    [self removeObserver:self forKeyPath:@keypath(self, editing)];
 }
 
 - (void)viewDidAppear
 {
     if (self.editing) {
-        [self.recipeNameField becomeFirstResponder];
+        [self.view.window makeFirstResponder:self.recipeNameField];
     }
     else {
-        [self.recipeNameField setEditable:NO];
-        [self.recipeNameField setBordered:NO];
-        [self.recipeNameField setDrawsBackground:NO];
-
-        [self.recipeDescriptionField setEditable:NO];
-        [self.recipeDescriptionField setBordered:NO];
-        [self.recipeDescriptionField setDrawsBackground:NO];
-
-        [self.saveButton setHidden:YES];
-        [self.cancelButton setHidden:YES];
+        [self setEditing:NO];
+        [self.recipeDescriptionField setShouldBeEditing:NO];
+        [self.recipeNameField setShouldBeEditing:NO];
     }
 }
 
@@ -132,15 +160,23 @@
                         change:(NSDictionary<NSString *, id> *)change
                        context:(void *)context
 {
-    DDLogDebug(@"%@ changed.", keyPath);
-
     if ([keyPath isEqualToString:@keypath(self, currentRecipe)]) {
-        [self.recipeStepCreateController setCurrentRecipe:self.currentRecipe];
+        DDLogDebug(@"Current recipe changed");
+        //        [self.recipeStepController setCurrentRecipe:self.currentRecipe];
     }
-    else if ([keyPath isEqualToString:@keypath(self, isEditing)]) {
-        [self internalSetEditing:NO];
-        DDLogFunction();
+    else if ([keyPath isEqualToString:@keypath(self, editing)]) {
+        NSNumber *wantsToEdit = [change objectForKey:NSKeyValueChangeNewKey];
+        [self internalSetEditing:wantsToEdit.boolValue];
     }
+}
+
+- (void)registerAsObserverForSelf
+{
+    [self addObserver:self forKeyPath:@keypath(self, currentRecipe) options:0 context:nil];
+    [self addObserver:self
+           forKeyPath:@keypath(self, editing)
+              options:NSKeyValueObservingOptionNew
+              context:nil];
 }
 
 @end

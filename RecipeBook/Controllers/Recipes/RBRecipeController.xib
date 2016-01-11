@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -15,8 +16,9 @@
                 <outlet property="recipeDescriptionField" destination="tQB-5c-4Sf" id="6EB-ha-9Os"/>
                 <outlet property="recipeNameField" destination="hqV-ax-1oY" id="xkB-PF-BXn"/>
                 <outlet property="recipeRatingIndicator" destination="FDb-2m-zBW" id="bj5-dt-Foj"/>
-                <outlet property="recipeStepCreateController" destination="E87-Sd-hGi" id="Jda-09-Laq"/>
+                <outlet property="recipeStepController" destination="Wgz-UW-4Sf" id="20F-C3-wjA"/>
                 <outlet property="recipeStepsBox" destination="Qb1-fp-D4Z" id="Fjh-Q0-FkL"/>
+                <outlet property="removeStepButton" destination="3yW-rb-Mfy" id="T4J-09-AL4"/>
                 <outlet property="saveButton" destination="4ct-P6-aAS" id="cLR-2i-HAt"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -31,17 +33,11 @@
                 <userLayoutGuide location="644" affinity="minX"/>
             </userGuides>
             <subviews>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4ct-P6-aAS">
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4ct-P6-aAS" customClass="RBSaveOrEditButton">
                     <rect key="frame" x="568" y="29" width="82" height="32"/>
                     <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Kh2-JR-N0o">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
-                        <string key="keyEquivalent" base64-UTF8="YES">
-DQ
-</string>
-                        <connections>
-                            <action selector="saveButtonPressed:" target="-2" id="bRv-cj-eqW"/>
-                        </connections>
                     </buttonCell>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2UQ-do-VIJ">
@@ -70,10 +66,10 @@ Gw
                     <rect key="frame" x="524" y="538" width="120" height="24"/>
                     <levelIndicatorCell key="cell" editable="YES" alignment="left" doubleValue="3" maxValue="5" warningValue="2" criticalValue="2" levelIndicatorStyle="rating" image="ic_star" id="SS2-Pt-uu0"/>
                     <connections>
-                        <binding destination="E87-Sd-hGi" name="value" keyPath="self.currentRecipe.stars" id="Viw-Ug-2fY"/>
+                        <binding destination="-2" name="value" keyPath="self.currentRecipe.stars" id="p3c-AM-cMm"/>
                     </connections>
                 </levelIndicator>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="tQB-5c-4Sf">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="tQB-5c-4Sf" customClass="RBTextField">
                     <rect key="frame" x="36" y="498" width="454" height="22"/>
                     <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Recipe Description..." drawsBackground="YES" id="R8K-jl-WTS">
                         <font key="font" metaFont="system"/>
@@ -113,7 +109,8 @@ Gw
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="btnInsertNewStep:" target="E87-Sd-hGi" id="rgz-VK-R7e"/>
+                                    <action selector="btnInsertNewStep:" target="Wgz-UW-4Sf" id="zGI-89-HMR"/>
+                                    <binding destination="-2" name="enabled" keyPath="self.editing" id="YjW-Ci-TBJ"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3yW-rb-Mfy">
@@ -123,7 +120,8 @@ Gw
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="btnRemoveSelectedStep:" target="E87-Sd-hGi" id="j79-83-0Pz"/>
+                                    <action selector="btnRemoveSelectedStep:" target="Wgz-UW-4Sf" id="mR3-ld-leZ"/>
+                                    <binding destination="-2" name="enabled" keyPath="self.editing" id="miq-Y7-niu"/>
                                 </connections>
                             </button>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="28" horizontalPageScroll="10" verticalLineScroll="28" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PPw-fZ-3q0">
@@ -171,6 +169,9 @@ Gw
                                                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
+                                                                    <connections>
+                                                                        <binding destination="9h6-0G-wGv" name="value" keyPath="objectValue.stepText" id="TkU-FZ-isx"/>
+                                                                    </connections>
                                                                 </textField>
                                                                 <button translatesAutoresizingMaskIntoConstraints="NO" id="tfj-Op-6SA">
                                                                     <rect key="frame" x="431" y="5" width="16" height="16"/>
@@ -203,8 +204,8 @@ Gw
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
-                                                <outlet property="dataSource" destination="E87-Sd-hGi" id="m8m-ix-x5O"/>
-                                                <outlet property="delegate" destination="E87-Sd-hGi" id="aEl-Cy-nX2"/>
+                                                <outlet property="dataSource" destination="Wgz-UW-4Sf" id="Oun-Su-eFz"/>
+                                                <outlet property="delegate" destination="Wgz-UW-4Sf" id="Bbq-h4-R9Y"/>
                                             </connections>
                                         </tableView>
                                     </subviews>
@@ -240,7 +241,7 @@ Gw
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </box>
-                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hqV-ax-1oY">
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hqV-ax-1oY" customClass="RBTextField">
                     <rect key="frame" x="36" y="537" width="454" height="27"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Recipe Name" drawsBackground="YES" id="Nr7-Mg-EtB">
                         <font key="font" metaFont="systemLight" size="18"/>
@@ -283,9 +284,10 @@ Gw
             </constraints>
             <point key="canvasLocation" x="462" y="464"/>
         </customView>
-        <customObject id="E87-Sd-hGi" customClass="RBRecipeStepController">
+        <customObject id="Wgz-UW-4Sf" customClass="RBRecipeStepController">
             <connections>
-                <outlet property="tableView" destination="aRI-Jo-KXu" id="XlP-EW-wNA"/>
+                <outlet property="delegate" destination="-2" id="GSI-V5-Ex5"/>
+                <outlet property="tableView" destination="aRI-Jo-KXu" id="fgr-5H-KKC"/>
             </connections>
         </customObject>
     </objects>
