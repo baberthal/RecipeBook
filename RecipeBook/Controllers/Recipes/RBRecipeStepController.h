@@ -6,26 +6,32 @@
 //  Copyright © 2016 Morgan Lieberthal. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 @class RBCoreDataManager;
 @class RBRecipe, RBRecipeStep;
 
-@protocol RBRecipeStepCreateControllerDelegate <NSObject>
+@protocol RBRecipeStepControllerDelegate <NSObject>
 
-- (void)didInsertNewStep:(RBRecipeStep *)newStep;
+@property RBRecipe *currentRecipe;
+@property(nonatomic, assign, getter=isEditing) BOOL editing;
 
 @end
 
 @interface RBRecipeStepController : NSObject <NSTableViewDataSource, NSTableViewDelegate>
 
 @property(readonly) RBCoreDataManager *coreDataManager;
-@property RBRecipe *currentRecipe;
-@property NSMutableOrderedSet<RBRecipeStep *> *recipeSteps;
+
+@property(readonly) RBRecipe *currentRecipe;
+@property(readonly) NSMutableOrderedSet<RBRecipeStep *> *recipeSteps;
+
 @property(weak) IBOutlet NSTableView *tableView;
 
-@property(weak) IBOutlet id<RBRecipeStepCreateControllerDelegate> delegate;
+@property(weak) IBOutlet id<RBRecipeStepControllerDelegate> delegate;
+
+@property(atomic, assign) NSDragOperation currentItemDragOperation;
 
 - (instancetype)initWithRecipe:(RBRecipe *)recipe;
+
+- (IBAction)btnRemoveSelectedStep:(id)sender;
+- (IBAction)btnInsertNewStep:(id)sender;
 
 @end

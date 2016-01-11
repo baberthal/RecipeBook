@@ -26,6 +26,39 @@
     return [RBCoreDataManager sharedManager];
 }
 
+- (NSMutableOrderedSet<RBRecipeStep *> *)recipeSteps
+{
+    if (_recipeSteps) {
+        return _recipeSteps;
+    }
+
+    if (self.currentRecipe) {
+        if (self.currentRecipe.steps) {
+            _recipeSteps = [self.currentRecipe.steps mutableCopy];
+            return _recipeSteps;
+        }
+        DDLogDebug(@"%s - I have a recipe, but it steps was nil", __PRETTY_FUNCTION__);
+    }
+
+    _recipeSteps = [NSMutableOrderedSet orderedSet];
+    DDLogDebug(@"%s - I do not have a recipe", __PRETTY_FUNCTION__);
+
+    return _recipeSteps;
+}
+
+- (RBRecipe *)currentRecipe
+{
+    if (_currentRecipe && _currentRecipe == [self.delegate currentRecipe]) {
+        return _currentRecipe;
+    }
+
+    if (self.delegate) {
+        _currentRecipe = [self.delegate currentRecipe];
+    }
+
+    return _currentRecipe;
+}
+
 #pragma mark - Initializers
 
 - (instancetype)initWithRecipe:(RBRecipe *)recipe
@@ -36,15 +69,53 @@
     }
 
     _currentRecipe = recipe;
-    _recipeSteps = [NSMutableOrderedSet orderedSet];
+    _recipeSteps = [recipe.steps mutableCopy];
+    [self registerAsObserverForSelf];
 
     return self;
 }
 
 - (void)awakeFromNib
 {
-    if (!_recipeSteps) {
-        _recipeSteps = [NSMutableOrderedSet orderedSet];
+    [self registerAsObserverForSelf];
+}
+
+- (void)registerAsObserverForSelf
+{
+    [self addObserver:self forKeyPath:@keypath(self, currentRecipe) options:0 context:nil];
+    [self.tableView setDraggingSourceOperationMask:NSDragOperationMove | NSDragOperationDelete
+                                          forLocal:YES];
+}
+
+- (void)dealloc
+{
+    [self removeObserver:self forKeyPath:@keypath(self, currentRecipe)];
+}
+
+#pragma mark - Events
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary<NSString *, id> *)change
+                       context:(void *)context
+{
+    DDLogDebug(@"Change: %@", keyPath);
+    if ([keyPath isEqualToString:@keypath(self, currentRecipe)]) {
+        [self didChangeCurrentRecipe];
+    }
+    else if ([keyPath isEqualToString:@keypath(self, recipeSteps)]) {
+        [self.tableView reloadData];
+    }
+    else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
+}
+
+- (void)didChangeCurrentRecipe
+{
+    NSOrderedSet *steps = self.currentRecipe.steps;
+    if (steps && steps.count) {
+        _recipeSteps = [steps mutableCopy];
     }
 }
 
@@ -76,7 +147,7 @@
     NSString *stepNumber = [NSString stringWithFormat:@"%ld. ", (row + 1)];
     [view.stepNumberField setStringValue:stepNumber];
 
-    [view.textField setStringValue:[[self.recipeSteps objectAtIndex:row] stepText]];
+    //    [view.textField setStringValue:[[self.recipeSteps objectAtIndex:row] stepText]];
     return view;
 }
 
@@ -104,6 +175,12 @@
     [self moveFocusToViewForRow:row];
 }
 
+- (void)tableView:(NSTableView *)tableView
+ didRemoveRowView:(NSTableRowView *)rowView
+           forRow:(NSInteger)row
+{
+}
+
 #pragma mark - Actions
 
 - (IBAction)btnInsertNewStep:(id)sender
@@ -112,10 +189,6 @@
           insertNewObjectForEntityForName:@"RecipeStep"
                    inManagedObjectContext:self.coreDataManager.managedObjectContext];
     newStep.recipe = self.currentRecipe;
-
-    if (self.delegate && [self.delegate respondsToSelector:@selector(didInsertNewStep:)]) {
-        [self.delegate didInsertNewStep:newStep];
-    }
 
     NSInteger idx = self.tableView.selectedRow;
     if (idx == -1) {
@@ -134,11 +207,16 @@
 - (void)moveFocusToViewForRow:(NSInteger)row
 {
     RBRecipeStepTableCellView *view = [self.tableView viewAtColumn:0 row:row makeIfNecessary:NO];
-    [view.textField becomeFirstResponder];
+    if ([self.delegate isEditing]) {
+        [view.window makeFirstResponder:view];
+    }
 }
 
 - (IBAction)btnRemoveSelectedStep:(id)sender
 {
+    [self.recipeSteps removeObjectsAtIndexes:self.tableView.selectedRowIndexes];
+    [self.tableView removeRowsAtIndexes:self.tableView.selectedRowIndexes
+                          withAnimation:NSTableViewAnimationSlideUp];
 }
 
 @end
