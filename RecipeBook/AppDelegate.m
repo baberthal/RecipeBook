@@ -23,6 +23,51 @@
 {
     [DDLog addLogger:[DDASLLogger sharedInstance]];
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
+#ifdef DEBUG
+    NSColorList *solarized = [NSColorList colorListNamed:@"Solarized"];
+
+    if (!solarized) {
+        return;
+    }
+
+    NSColor *error = [solarized colorWithKey:@"red"];
+    NSColor *warn = [solarized colorWithKey:@"orange"];
+    NSColor *info = [solarized colorWithKey:@"green"];
+    NSColor *debug = [solarized colorWithKey:@"violet"];
+    NSColor *verbose = [solarized colorWithKey:@"cyan"];
+
+    if (error) {
+        [[DDTTYLogger sharedInstance] setForegroundColor:error
+                                         backgroundColor:nil
+                                                 forFlag:DDLogFlagError];
+    }
+
+    if (warn) {
+        [[DDTTYLogger sharedInstance] setForegroundColor:warn
+                                         backgroundColor:nil
+                                                 forFlag:DDLogFlagWarning];
+    }
+
+    if (info) {
+        [[DDTTYLogger sharedInstance] setForegroundColor:info
+                                         backgroundColor:nil
+                                                 forFlag:DDLogFlagInfo];
+    }
+
+    if (debug) {
+        [[DDTTYLogger sharedInstance] setForegroundColor:debug
+                                         backgroundColor:nil
+                                                 forFlag:DDLogFlagDebug];
+    }
+
+    if (verbose) {
+        [[DDTTYLogger sharedInstance] setForegroundColor:verbose
+                                         backgroundColor:nil
+                                                 forFlag:DDLogFlagVerbose];
+    }
+
+#endif
 }
 
 #pragma mark - Application Lifecycle Events
